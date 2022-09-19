@@ -1,5 +1,6 @@
 import { ListItem, Avatar } from '@rneui/themed'
 import { View } from 'react-native'
+import TopicElement from '../components/ListElements/TopicElement'
 
 const list = [
     {
@@ -19,12 +20,7 @@ function Topics() {
         <View>
             {
                 list.map((l, i) => (
-                    <ListItem key={i} bottomDivider>
-                        <ListItem.Content>
-                            <ListItem.Title>{l.name}</ListItem.Title>
-                            <ListItem.Subtitle>{l.subtitle}</ListItem.Subtitle>
-                        </ListItem.Content>
-                    </ListItem>
+                    <TopicElement key={i} name={l.name} subtitle={l.subtitle} />
                 ))
             }
         </View>

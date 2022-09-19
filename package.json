@@ -9,12 +9,28 @@
     "web": "expo start --web"
   },
   "dependencies": {
+    "@expo/webpack-config": "^0.17.0",
+    "@mobile-reality/react-native-select-pro": "^1.11.1",
+    "@react-native-material/core": "^1.3.7",
+    "@react-navigation/native": "^6.0.12",
+    "@react-navigation/native-stack": "^6.8.0",
+    "@reduxjs/toolkit": "^1.8.5",
+    "@rneui/base": "^4.0.0-rc.6",
+    "@rneui/themed": "^4.0.0-rc.6",
+    "axios": "^0.27.2",
     "expo": "~46.0.9",
     "expo-status-bar": "~1.4.0",
     "react": "18.0.0",
     "react-dom": "18.0.0",
     "react-native": "0.69.5",
-    "react-native-web": "~0.18.7"
+    "react-native-gesture-handler": "^2.6.0",
+    "react-native-picker-select": "^8.0.4",
+    "react-native-safe-area-context": "^4.3.3",
+    "react-native-screens": "^3.17.0",
+    "react-native-web": "~0.18.7",
+    "react-redux": "^8.0.2",
+    "styled-components": "^5.3.5",
+    "twrnc": "^3.4.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",

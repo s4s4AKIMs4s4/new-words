@@ -1,18 +1,31 @@
 import { StatusBar } from 'expo-status-bar';
+import React, { useState, useEffect } from 'react';
+
 import { StyleSheet, Text, View,ScrollView } from 'react-native';
 import { Provider } from 'react-redux';
-import { setupStore } from '../../srote/store';
-import { listSlice } from "../../srote/slice/listSlice"
+// import { setupStore } from '../../srote/store';
+// import { listSlice } from "../../srote/slice/sessionSlice"
 import { useAppDispatch, useAppSelector } from '../../hooks/redux';
 import { Button, Image } from '@rneui/base';
 import tw from 'twrnc';
 import Card from '../components/Card';
 import  PrimaryLink  from '../components/Links/PrimaryLink';
+import {userSlice} from '../../store/slice/userSlice';
 
 export default function Home({ navigation }: any) {
-    const foo = useAppSelector(state => state.userReducer.foo)
+    const User = useAppSelector(state => state.userReducer)
     const dispatch = useAppDispatch()
-    const { setListItems } = listSlice.actions
+    const { setisAuth } = userSlice.actions
+    //test redux actions:
+    useEffect(() => {
+        console.log(User.isAuth)
+    },[User])
+
+    useEffect(() => {
+        console.log(User)
+        dispatch(setisAuth(true))
+    },[])
+
     return <>
         <View style={tw`bg-[#fff] w-full h-full`}>
             <ScrollView>

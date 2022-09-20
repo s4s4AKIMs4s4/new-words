@@ -1,6 +1,6 @@
 import { Provider } from 'react-redux';
 import { Navigation } from './Navigation';
-import { setupStore } from './srote/store';
+import { setupStore } from './store/store';
 import { SelectProvider } from '@mobile-reality/react-native-select-pro';
 
 export default function App() {

@@ -22,8 +22,8 @@ export const Navigation = () => {
                         fontWeight: 'bold',
                     },
                 }} />
-                <Stack.Screen name="FullPost" component={Settings} options={{ title: 'news' }} />
-                <Stack.Screen name="Post" component={Topics} options={{ title: 'No news' }} />
+                <Stack.Screen name="Settings" component={Settings} options={{ title: 'news' }} />
+                <Stack.Screen name="Topics" component={Topics} options={{ title: 'No news' }} />
                 <Stack.Screen name="Learn" component={Learn} options={{ title: 'Learn' }} />
 
             </Stack.Navigator>

@@ -1,29 +1,37 @@
 import { ListItem, Avatar } from '@rneui/themed'
-import { View } from 'react-native'
+import { TouchableHighlight, View } from 'react-native'
 import TopicElement from '../components/ListElements/TopicElement'
+import { useEffect, Suspense, useCallback } from 'react'
+import { SessionServices } from '../services/SessionServices'
+import { ScrollView } from 'react-native-gesture-handler'
+import { useAppDispatch } from '../../hooks/redux'
+import {sessionSlice} from '../../store/slice/sessionSlice';
 
-const list = [
-    {
-        name: 'Amy Farha',
-        avatar_url: 'https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg',
-        subtitle: 'Vice President'
-    },
-    {
-        name: 'Chris Jackson',
-        avatar_url: 'https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg',
-        subtitle: 'Vice Chairman'
-    },
-]
+function Topics({ navigation }: any) {
+    const dispatch = useAppDispatch()
+    const { setChapterId } = sessionSlice.actions
+    
+    const pressHanlder = useCallback((key: number) => () => {
+        dispatch(setChapterId(key))
+        navigation.navigate('Home')
+    }, [])
 
-function Topics() {
     return <>
-        <View>
-            {
-                list.map((l, i) => (
-                    <TopicElement key={i} name={l.name} subtitle={l.subtitle} />
-                ))
-            }
-        </View>
+        <Suspense fallback=" ">
+            <ScrollView>
+                <View>
+                    {
+                        SessionServices.getTopic().map((chapterValue) => {
+                            return <TouchableHighlight key={chapterValue.chapterId} onPress={pressHanlder(chapterValue.chapterId)}>
+                                <View>
+                                    <TopicElement name={chapterValue.chapterName} subtitle={chapterValue.description} />
+                                </View>
+                            </TouchableHighlight>
+                        })
+                    }
+                </View>
+            </ScrollView>
+        </Suspense>
     </>
 }
 export default Topics

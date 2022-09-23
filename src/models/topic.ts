@@ -33,3 +33,13 @@ export enum topicEnum{
     SPORT = 32,
     COLORS = 33,
 }
+
+export interface INavigation {
+    navigation:any
+}
+
+export interface ITopic{
+    topicName: string;
+    topicId: number;
+    description: string;
+}

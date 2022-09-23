@@ -1,4 +1,4 @@
-export enum LanguageEnum{
+export enum LanguageEnum {
     AR = "ar",
     BN = "bn",
     DE = "de",
@@ -14,3 +14,18 @@ export enum LanguageEnum{
     ZH_CN = "zh_CN",
     ZH_TW = "zh_TW",
 }
+
+export const LanguageList: Array<LanguageEnum> = [
+    LanguageEnum.AR, 
+    LanguageEnum.BN,
+    LanguageEnum.DE, 
+    LanguageEnum.EN, 
+    LanguageEnum.ES, 
+    LanguageEnum.FR, 
+    LanguageEnum.IT, 
+    LanguageEnum.JA, 
+    LanguageEnum.KO, 
+    LanguageEnum.PL, 
+    LanguageEnum.PT, 
+    LanguageEnum.RU
+]

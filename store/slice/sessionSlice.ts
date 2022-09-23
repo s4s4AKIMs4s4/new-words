@@ -7,7 +7,7 @@ interface IInitialState {
     topicId:topicEnum,
 }
 const initialState: IInitialState = {
-    chapterId:0,
+    chapterId:1,
     topicId:0,
 }
 

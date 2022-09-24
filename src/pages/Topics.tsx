@@ -13,6 +13,8 @@ function Topics({ navigation }: any) {
     
     const pressHanlder = useCallback((key: number) => () => {
         dispatch(setChapterId(key))
+        // const {loadChapterId} = useStore()
+
         navigation.navigate('Home')
     }, [])
 

@@ -6,6 +6,7 @@ export interface IPrimaryTextInput{
 export default function PrimaryTextInput({placeholder}:IPrimaryTextInput) {
     return <>
         <TextInput
+            autoFocus = {true}
             style={styles.input}
             placeholder={placeholder}
         />

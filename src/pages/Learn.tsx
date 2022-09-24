@@ -10,7 +10,7 @@ function Learn() {
         <View style={tw`bg-[#fff] w-full h-full flex justify-center items-center`}>
             <Text style={tw`text-center text-black-100 text-5xl`}>Header</Text>
 
-            <PrimaryTextInput placeholder ={'nothing'}/>
+            <PrimaryTextInput  placeholder ={'nothing'}/>
             
              <View >
                 <View style={tw`flex justify-center flex-row mb-7`} >

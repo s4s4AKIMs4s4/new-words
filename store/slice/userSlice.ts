@@ -1,11 +1,13 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
-import { LanguageEnum } from "../../src/models/language"
+import useStore from "../../hooks/useStore"
+import { IUserLanguge, LanguageEnum } from "../../src/models/language"
 
-interface IInitialState {
+interface IAuth {
     isAuth:boolean,
-    sourseLanguage:LanguageEnum,
-    destenationLanguage:LanguageEnum,
 }
+
+type IInitialState = IAuth & IUserLanguge
+
 const initialState: IInitialState = {
     isAuth:false,
     sourseLanguage:LanguageEnum.EN,
@@ -20,10 +22,20 @@ export const userSlice = createSlice({
             state.isAuth = action.payload
         },
         setSourseLanguage(state:IInitialState, action:PayloadAction<LanguageEnum>){
-            state.sourseLanguage = action.payload            
+            const {saveUserLanguges} = useStore()
+            state.sourseLanguage = action.payload
+            saveUserLanguges({
+                destenationLanguage: state.destenationLanguage,
+                sourseLanguage:action.payload,
+            })        
         },
         setDestenationLanguage(state:IInitialState, action:PayloadAction<LanguageEnum>){
-            state.destenationLanguage = action.payload            
+            const {saveUserLanguges} = useStore()
+            state.destenationLanguage = action.payload
+            saveUserLanguges({
+                destenationLanguage: action.payload,
+                sourseLanguage:state.sourseLanguage
+            })            
         }
     }
 })

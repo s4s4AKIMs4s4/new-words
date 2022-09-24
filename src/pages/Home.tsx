@@ -10,13 +10,25 @@ import Card from '../components/Card';
 import PrimaryLink from '../components/Links/PrimaryLink';
 import { userSlice } from '../../store/slice/userSlice';
 import useGetChapterInformation from '../../hooks/useGetChapterInformation';
+import useStore from '../../hooks/useStore';
 
 export default function Home({ navigation }: any) {
     const User = useAppSelector(state => state.userReducer)
     const { description, header, topicList } = useGetChapterInformation()
-    
+    const {loadUserLanguges, saveUserLanguges} = useStore()
     const dispatch = useAppDispatch()
-    const { setisAuth } = userSlice.actions
+    const { setisAuth } =  userSlice.actions
+
+    useEffect(() => {
+        loadUserLanguges().then((result) => {
+            if(result){
+                dispatch(setisAuth(true))
+            }
+        }, (res) => {
+            console.log('reject')
+        })
+
+    },[])
 
     return <>
         <View style={tw`bg-[#fff] w-full h-full`}>

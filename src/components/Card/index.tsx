@@ -4,12 +4,12 @@ import tw from 'twrnc';
 import  PrimaryLink  from '../Links/PrimaryLink';
 import { INavigation, ITopic } from '../../models/topic';
 import { useEffect } from 'react';
-
-
+import { useAppSelector } from '../../../hooks/redux';
 
 export type ICard = ITopic & INavigation
 
 export default function Card({description, navigation, topicId, topicName}: ICard) {
+    const User = useAppSelector(state => state.userReducer)
 
     return <>
         <View style={tw`bg-[#fff] mt-4`}>
@@ -20,7 +20,20 @@ export default function Card({description, navigation, topicId, topicName}: ICar
             </View>
 
             <View style={tw`flex justify-center flex-row `} >
-                <PrimaryLink color={'#0299f2'} optionClassName = {'mt-6'} title = {"Select Topic"} navigationCallback = {() => navigation.navigate('Learn')} />
+                <PrimaryLink 
+                    color={'#0299f2'} 
+                    optionClassName = {'mt-6'} 
+                    title = {"Select Topic"} 
+                    navigationCallback = {
+                        () => {
+                            if(User.isAuth){
+                                navigation.navigate('Learn')
+                            } 
+                            else{
+                                navigation.navigate('Settings')
+                            }
+                        }
+                    } />
             </View>
 
         </View>

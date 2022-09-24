@@ -15,6 +15,11 @@ export enum LanguageEnum {
     ZH_TW = "zh_TW",
 }
 
+export interface IUserLanguge{
+    sourseLanguage:LanguageEnum
+    destenationLanguage:LanguageEnum
+}
+
 export const LanguageList: Array<LanguageEnum> = [
     LanguageEnum.AR, 
     LanguageEnum.BN,

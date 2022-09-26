@@ -17,7 +17,7 @@ const getAllSubTopic = () => {
     //@ts-ignore
     const sumWithInitial = Topics.reduce((previousValue:ISubTopick, currentValue) => {
         if(previousValue)
-            return [...currentValue.subTopic, ...previousValue]
+            return [...previousValue, ...currentValue.subTopic]
     }, []);
 
     return sumWithInitial 

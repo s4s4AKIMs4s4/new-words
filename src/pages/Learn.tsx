@@ -1,21 +1,56 @@
-import { View, TextInput, StyleSheet } from 'react-native'
-import { Button, Text } from '@rneui/base';
+import { View, TextInput } from 'react-native'
+import { Text } from '@rneui/base';
 import tw from 'twrnc';
 import PrimaryButton from '../components/Buttons/PrimaryButton';
 import PrimaryTextInput from '../components/FormElements/PrimaryTextInput'
+import { useAppSelector } from '../../hooks/redux';
+import { useLearn } from '../../hooks/useLearn';
+import React, { useState,useRef } from 'react';
 
+export enum AnswerEnum{
+    RIGHT = 'RIGHT',
+    WRONG = 'WRONG',
+    NO_ANSWER = 'NO_ANSWER'
+}
 
 function Learn() {
+    const session = useAppSelector(state => state.sessionReducer)
+    const {topicWords, getWords, getOtherWord, currentWord, getNextWord, checkWord, getAllDestinationWords} = useLearn(session.topicId)
+    const [isRightAnswer, setIsRightAnswer] = useState<AnswerEnum>(AnswerEnum.NO_ANSWER)
+    const inputRef = useRef<TextInput>({} as TextInput)
+    const [inputValue, setInputValue] = useState<string>('')
+
+    const checkWordHandler = () => {
+        if(checkWord(inputValue)){
+            setIsRightAnswer(AnswerEnum.NO_ANSWER)
+            setInputValue('')
+            getNextWord()
+        }
+        else{
+            setInputValue(getAllDestinationWords().join(', '))
+            setIsRightAnswer(AnswerEnum.WRONG)
+        }
+    }
+
+    const nextWordHandler = () => {
+        setIsRightAnswer(AnswerEnum.NO_ANSWER)
+        setInputValue('')
+        getNextWord()
+    }
+
     return <>
         <View style={tw`bg-[#fff] w-full h-full flex justify-center items-center`}>
-            <Text style={tw`text-center text-black-100 text-5xl`}>Header</Text>
+            <Text style={tw`text-center text-black-100 text-5xl`}>{currentWord}</Text>
 
-            <PrimaryTextInput  placeholder ={'nothing'}/>
+            <PrimaryTextInput setInputValue = {setInputValue} value = {inputValue} placeholder ={'nothing'}/>
             
              <View >
                 <View style={tw`flex justify-center flex-row mb-7`} >
-                    <PrimaryButton backgroundColor='rgba(39, 39, 39, 1)' title='Select Topic'/>
-                    <PrimaryButton containerStyle ={'ml-1'} backgroundColor='rgba(39, 39, 39, 1)' title='Settings'/>
+                    {
+                        isRightAnswer === AnswerEnum.NO_ANSWER ? <PrimaryButton  callback={checkWordHandler} backgroundColor='rgba(39, 39, 39, 1)' title='check'/>
+                            : <PrimaryButton  callback={nextWordHandler} backgroundColor='rgba(39, 39, 39, 1)' title='next word'/>
+                    }
+                    <PrimaryButton callback = {getOtherWord} containerStyle ={'ml-1'} backgroundColor='rgba(39, 39, 39, 1)' title='other meaning'/>
                 </View>
             </View>
 

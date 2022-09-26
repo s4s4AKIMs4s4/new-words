@@ -1,13 +1,19 @@
 import { View, TextInput, StyleSheet } from 'react-native'
 
 export interface IPrimaryTextInput{
-    placeholder:string
+    placeholder:string,
+    value:string,
+    setInputValue:(value:string) => void
 }
-export default function PrimaryTextInput({placeholder}:IPrimaryTextInput) {
+export default function PrimaryTextInput({placeholder, value, setInputValue}:IPrimaryTextInput) {
     return <>
         <TextInput
+            value = {value}
             autoFocus = {true}
             style={styles.input}
+            onChangeText = {(event) => {
+                setInputValue(event)
+            }}
             placeholder={placeholder}
         />
     </>

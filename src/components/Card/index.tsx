@@ -4,12 +4,15 @@ import tw from 'twrnc';
 import  PrimaryLink  from '../Links/PrimaryLink';
 import { INavigation, ITopic } from '../../models/topic';
 import { useEffect } from 'react';
-import { useAppSelector } from '../../../hooks/redux';
+import { useAppDispatch, useAppSelector } from '../../../hooks/redux';
+import { sessionSlice } from '../../../store/slice/sessionSlice';
 
 export type ICard = ITopic & INavigation
 
 export default function Card({description, navigation, topicId, topicName}: ICard) {
     const User = useAppSelector(state => state.userReducer)
+    const { setTopicId } =  sessionSlice.actions
+    const dispatch = useAppDispatch()
 
     return <>
         <View style={tw`bg-[#fff] mt-4`}>
@@ -26,12 +29,11 @@ export default function Card({description, navigation, topicId, topicName}: ICar
                     title = {"Select Topic"} 
                     navigationCallback = {
                         () => {
-                            if(User.isAuth){
+                            dispatch(setTopicId(topicId))
+                            if(User.isAuth)
                                 navigation.navigate('Learn')
-                            } 
-                            else{
+                            else
                                 navigation.navigate('Settings')
-                            }
                         }
                     } />
             </View>

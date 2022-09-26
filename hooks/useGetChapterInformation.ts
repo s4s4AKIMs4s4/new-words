@@ -18,7 +18,7 @@ export default function useGetChapterInformation(){
         loadChapterId().then((res) => {  
             dispatch( setChapterId(res.chapterId))
         }, () => {
-            dispatch( setChapterId(1) )
+            dispatch( setChapterId(2) )
         })
     },[])
 

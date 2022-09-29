@@ -5,9 +5,9 @@ import PrimaryButton from '../components/Buttons/PrimaryButton';
 import PrimaryTextInput from '../components/FormElements/PrimaryTextInput'
 import { useAppSelector } from '../../hooks/redux';
 import { useLearn } from '../../hooks/useLearn';
-import React, { useState,useRef } from 'react';
+import React, { useState, useRef } from 'react';
 
-export enum AnswerEnum{
+export enum AnswerEnum {
     RIGHT = 'RIGHT',
     WRONG = 'WRONG',
     NO_ANSWER = 'NO_ANSWER'
@@ -15,18 +15,18 @@ export enum AnswerEnum{
 
 function Learn() {
     const session = useAppSelector(state => state.sessionReducer)
-    const {topicWords, getWords, getOtherWord, currentWord, getNextWord, checkWord, getAllDestinationWords} = useLearn(session.topicId)
+    const { topicWords, getWords, getOtherWord, currentWord, getNextWord, checkWord, getAllDestinationWords } = useLearn(session.topicId)
     const [isRightAnswer, setIsRightAnswer] = useState<AnswerEnum>(AnswerEnum.NO_ANSWER)
     const inputRef = useRef<TextInput>({} as TextInput)
     const [inputValue, setInputValue] = useState<string>('')
 
     const checkWordHandler = () => {
-        if(checkWord(inputValue)){
+        if (checkWord(inputValue)) {
             setIsRightAnswer(AnswerEnum.NO_ANSWER)
             setInputValue('')
             getNextWord()
         }
-        else{
+        else {
             setInputValue(getAllDestinationWords().join(', '))
             setIsRightAnswer(AnswerEnum.WRONG)
         }
@@ -42,15 +42,20 @@ function Learn() {
         <View style={tw`bg-[#fff] w-full h-full flex justify-center items-center`}>
             <Text style={tw`text-center text-black-100 text-5xl`}>{currentWord}</Text>
 
-            <PrimaryTextInput setInputValue = {setInputValue} value = {inputValue} placeholder ={'nothing'}/>
-            
-             <View >
+            <PrimaryTextInput
+                isWrongAnswer={AnswerEnum.WRONG === isRightAnswer}
+                setInputValue={setInputValue}
+                value={inputValue}
+                placeholder={'enter one of the possible translations'}
+            />
+
+            <View >
                 <View style={tw`flex justify-center flex-row mb-7`} >
                     {
-                        isRightAnswer === AnswerEnum.NO_ANSWER ? <PrimaryButton  callback={checkWordHandler} backgroundColor='rgba(39, 39, 39, 1)' title='check'/>
-                            : <PrimaryButton  callback={nextWordHandler} backgroundColor='rgba(39, 39, 39, 1)' title='next word'/>
+                        isRightAnswer === AnswerEnum.NO_ANSWER ? <PrimaryButton callback={checkWordHandler} backgroundColor='rgba(39, 39, 39, 1)' title='check' />
+                            : <PrimaryButton callback={nextWordHandler} backgroundColor='rgba(39, 39, 39, 1)' title='next word' />
                     }
-                    <PrimaryButton callback = {getOtherWord} containerStyle ={'ml-1'} backgroundColor='rgba(39, 39, 39, 1)' title='other meaning'/>
+                    <PrimaryButton callback={getOtherWord} containerStyle={'ml-1'} backgroundColor='rgba(39, 39, 39, 1)' title='other meaning' />
                 </View>
             </View>
 

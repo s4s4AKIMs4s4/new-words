@@ -22,7 +22,6 @@ export function useLearn(topicId: topicEnum | null) {
     const User = useAppSelector(state => state.userReducer)
 
     const getWords = (position:number) => {
-
         if (topicWords.current && position) {
             const test1 = topicWords.current[position][User.sourseLanguage].split(',')
             
@@ -42,8 +41,6 @@ export function useLearn(topicId: topicEnum | null) {
             setCurrentPosition(position)
             getWords(position)
         }
-        //@ts-ignore
-        // console.log(getRandomArbitrary(0, topicWords.current?.length))
     }, [topicId])
 
 
@@ -78,24 +75,6 @@ export function useLearn(topicId: topicEnum | null) {
     const getAllDestinationWords = () => {
         return destenationLanguageList!.current.languageList
     }
-
-    // const checkForEmptyWords = (index: number) => {
-    //     if (topicWords.current) {
-    //         const sourseLanguageList = topicWords.current[index][User.sourseLanguage]
-    //         const destenationLanguageList = topicWords.current[index][User.destenationLanguage]
-
-    //         const isUsableSource = sourseLanguageList.split().every((word: string) => {
-    //             return word !== ''
-    //         })
-
-    //         const isUsableDestination = destenationLanguageList.split().every((word: string) => {
-    //             return word !== ''
-    //         })
-
-    //         if (isUsableSource && isUsableDestination) return
-    //     }
-    //     else return false
-    // }
 
     const getNextWords = () => {
         setCurrentPosition((prev) => {

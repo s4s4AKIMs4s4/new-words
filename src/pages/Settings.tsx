@@ -1,5 +1,4 @@
 import { View, Text } from 'react-native';
-// import { Select } from '@mobile-reality/react-native-select-pro';
 import tw from 'twrnc';
 import { useAppDispatch, useAppSelector } from '../../hooks/redux';
 import { userSlice } from '../../store/slice/userSlice';
@@ -49,9 +48,9 @@ function Settings({navigation}:any) {
         <View style={tw`bg-[#fff] w-full h-full`}>
             <Text style={tw`text-center text-black-100  text-5xl mt-20`}>Settings</Text>
             <View style={tw`px-3`}>
-                <Text style={tw`text-sm font-light mt-15 mb-`}>Learn all the most essential and popular:</Text>
+                <Text style={tw`text-sm font-light mt-15 mb-`}>Сhoose the language you already know:</Text>
                 <SelectElement placeholder = {User.sourseLanguage} options={sourceOptions}  onSelect={setSourseLanguage} value='somevalue' label='somelabel' />
-                <Text style={tw`text-sm font-light mt-10 mb-2`}>Learn all the most essential and popular:</Text>
+                <Text style={tw`text-sm font-light mt-10 mb-2`}>Сhoose the language you would like to learn:</Text>
                 <SelectElement placeholder = {User.destenationLanguage} options = {destionationOptions} onSelect={setDestenationLanguage} value='somevalue' label='somelabel' />
                 <View style = {tw`flex justify-end`}>
                     {
@@ -62,7 +61,7 @@ function Settings({navigation}:any) {
                         }}
                         containerStyle ={'mt-5'} 
                         backgroundColor='rgba(39, 39, 39, 1)' 
-                        title='Settings'/>
+                        title='Learn'/>
                     }
                 </View>
             </View>

@@ -9,23 +9,27 @@ import Learn from "./src/pages/Learn";
 const Stack = createNativeStackNavigator();
 
 export const Navigation = () => {
+
+    const getHederOptions = (tittle:string) : any => {
+        return {
+            title: tittle,
+            headerStyle: {
+                backgroundColor: '#343a40',
+            },
+            headerTintColor: '#fff',
+            headerTitleStyle: {
+                fontWeight: 'bold',
+            },
+        }
+    }
+
     return (
         <NavigationContainer>
             <Stack.Navigator>
-                <Stack.Screen name="Home" component={Home} options={{
-                    title: 'My home',
-                    headerStyle: {
-                        backgroundColor: '#343a40',
-                    },
-                    headerTintColor: '#fff',
-                    headerTitleStyle: {
-                        fontWeight: 'bold',
-                    },
-                }} />
-                <Stack.Screen name="Settings" component={Settings} options={{ title: 'news' }} />
-                <Stack.Screen name="Topics" component={Topics} options={{ title: 'No news' }} />
-                <Stack.Screen name="Learn" component={Learn} options={{ title: 'Learn' }} />
-
+                <Stack.Screen name="Home" component={Home} options={getHederOptions('LearnWords')} />
+                <Stack.Screen name="Settings" component={Settings} options={getHederOptions('Settings')} />
+                <Stack.Screen name="Topics" component={Topics} options={getHederOptions('Topics')} />
+                <Stack.Screen name="Learn" component={Learn} options={getHederOptions('Learn')} />
             </Stack.Navigator>
         </NavigationContainer>
     )

@@ -40,7 +40,7 @@ function Learn() {
 
     return <>
         <View style={tw`bg-[#fff] w-full h-full flex justify-center items-center`}>
-            <Text style={tw`text-center text-black-100 text-5xl`}>{currentWord}</Text>
+            <Text style={tw`text-center text-5xl`}>{currentWord}</Text>
 
             <PrimaryTextInput
                 isWrongAnswer={AnswerEnum.WRONG === isRightAnswer}

@@ -11,7 +11,7 @@ export interface ISelectOption{
     value:LanguageEnum,
     label:string
 }
-
+                                                                                    
 function Settings({navigation}:any) {
     const User = useAppSelector(state => state.userReducer)
     const sessionObject = useAppSelector(state => state.sessionReducer)
@@ -46,9 +46,9 @@ function Settings({navigation}:any) {
 
     return <>
         <View style={tw`bg-[#fff] w-full h-full`}>
-            <Text style={tw`text-center text-black-100  text-5xl mt-20`}>Settings</Text>
+            <Text style={tw`text-center text-5xl mt-20`}>Settings</Text>
             <View style={tw`px-3`}>
-                <Text style={tw`text-sm font-light mt-15 mb-`}>Сhoose the language you already know:</Text>
+                <Text style={tw`text-sm font-light mt-15 mb-2`}>Сhoose the language you already know:</Text>
                 <SelectElement placeholder = { LanguageList.find((ListItem) => ListItem.value === User.sourseLanguage)?.label } options={sourceOptions}  onSelect={setSourseLanguage} value='somevalue' label='somelabel' />
                 <Text style={tw`text-sm font-light mt-10 mb-2`}>Сhoose the language you would like to learn:</Text>
                 <SelectElement placeholder = {LanguageList.find((ListItem) => ListItem.value === User.destenationLanguage)?.label} options = {destionationOptions} onSelect={setDestenationLanguage} value='somevalue' label='somelabel' />

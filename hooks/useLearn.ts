@@ -15,20 +15,21 @@ export interface ILanguageList {
 export function useLearn(topicId: topicEnum | null) {
     const topicWords = useRef<Array<any>>()
     const [currentPosition, setCurrentPosition] = useState<number | undefined>(undefined)
-    const sourseLanguageList = useRef<ILanguageList | null>({index:1,languageList:['']})
-    const destenationLanguageList = useRef<ILanguageList>({index:1,languageList:['']})
-    const [currentWord,setCurrentWord] = useState<string>('') 
+    const sourseLanguageList = useRef<ILanguageList | null>({ index: 1, languageList: [''] })
+    const destenationLanguageList = useRef<ILanguageList>({ index: 1, languageList: [''] })
+    const [currentWord, setCurrentWord] = useState<string>('')
 
     const User = useAppSelector(state => state.userReducer)
 
-    const getWords = (position:number) => {
+    const getWords = (position: number) => {
         if (topicWords.current && position) {
-            const test1 = topicWords.current[position][User.sourseLanguage].split(',')
+            const sourceWords = topicWords.current[position][User.sourseLanguage].split(',')
+            const destionatioWords = topicWords.current[position][User.destenationLanguage]
             
-            sourseLanguageList!.current!.languageList = getNotEmptyWords(test1)
+            sourseLanguageList!.current!.languageList = getNotEmptyWords(sourceWords)
             sourseLanguageList!.current!.index = 0
 
-            destenationLanguageList!.current!.languageList = getNotEmptyWords(topicWords.current[position][User.destenationLanguage].split(','))
+            destenationLanguageList!.current!.languageList = getNotEmptyWords(destionatioWords.split(','))
             destenationLanguageList!.current!.index = 0
             setCurrentWord(sourseLanguageList!.current!.languageList[destenationLanguageList!.current!.index])
         }
@@ -36,7 +37,7 @@ export function useLearn(topicId: topicEnum | null) {
 
     useEffect(() => {
         topicWords.current = filteredDataBase.getTopicAllWords(topicId)
-        if (topicWords.current){
+        if (topicWords.current) {
             const position = getRandomArbitrary(0, topicWords.current?.length)
             setCurrentPosition(position)
             getWords(position)
@@ -44,13 +45,28 @@ export function useLearn(topicId: topicEnum | null) {
     }, [topicId])
 
     const getNotEmptyWords = (list: Array<any>): Array<any> => {
-        return [...new Set(list.filter((word: any) => word !== '').map((word:string) => word.toLowerCase()))]
+        return [...new Set(list.filter((word: any) => word !== '').map((word: string) => word.toLowerCase()))]
     }
 
     const getNextWord = () => {
-        let newPosition = 0
+        let destionatioWords = []
+        let sourceWords = []
+
+        const conditionForNewPosition = (destionatioWords:any, sourceWords:any) => {
+            if(!destionatioWords || !sourceWords) return true
+            if(destionatioWords === '' || sourceWords === '') return true
+            return false            
+        }
+
         setCurrentPosition((prev) => {
-            newPosition = (prev as number + 1) % topicWords!.current!.length
+            let newPosition = null
+
+            do {
+                newPosition = ( (newPosition !== null ? newPosition : prev as number) + 1 )  % topicWords!.current!.length
+                destionatioWords = topicWords!.current![newPosition][User.destenationLanguage]
+                sourceWords = topicWords!.current![newPosition][User.sourseLanguage]          
+            } while (conditionForNewPosition(destionatioWords,sourceWords))
+
             getWords(newPosition)
             return newPosition
         })
@@ -75,23 +91,10 @@ export function useLearn(topicId: topicEnum | null) {
         return destenationLanguageList!.current.languageList
     }
 
-    const getNextWords = () => {
-        setCurrentPosition((prev) => {
-            if (prev) {
-                let index = prev + 1
-                while (getNotEmptyWords(topicWords!.current![index]).length === 0) {
-                    index = (index + 1) % topicWords!.current!.length
-                }
-                return index
-            }
-        })
-    }
-
     return {
         topicWords: topicWords.current,
         currentWord,
         getWords,
-        getNextWords,
         checkWord,
         getOtherWord,
         getAllDestinationWords,

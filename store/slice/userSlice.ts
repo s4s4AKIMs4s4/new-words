@@ -11,7 +11,7 @@ type IInitialState = IAuth & IUserLanguge
 const initialState: IInitialState = {
     isAuth:false,
     sourseLanguage:LanguageEnum.EN,
-    destenationLanguage: LanguageEnum.RU
+    destenationLanguage: LanguageEnum.ES
 }
 
 export const userSlice = createSlice({

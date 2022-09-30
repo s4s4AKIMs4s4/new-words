@@ -10,22 +10,16 @@ export interface ISelectElement{
     label:string,
     onSelect:(language:LanguageEnum) => void,
     options:Array<ISelectOption>,
-    placeholder:string
+    placeholder:string | undefined
 }
 
 export default function SelectElement({value, label, onSelect, options, placeholder}:ISelectElement) {
     const dispatch = useAppDispatch()
-    const { setisAuth } =  userSlice.actions
 
     return <>
         <Select
             placeholderText = {placeholder}
             options = {options}
-            // options = {
-            //     LanguageList.map((LanguageElement) => {
-            //         return { value: LanguageElement, label: LanguageElement }
-            //     }) 
-            // }
             onSelect = {(e) => {
                 if(e?.value) 
                     //@ts-ignore

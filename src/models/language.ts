@@ -19,18 +19,24 @@ export interface IUserLanguge{
     sourseLanguage:LanguageEnum
     destenationLanguage:LanguageEnum
 }
+export interface ILanguageList{
+    value:LanguageEnum,
+    label:string
+}
 
-export const LanguageList: Array<LanguageEnum> = [
-    LanguageEnum.AR, 
-    LanguageEnum.BN,
-    LanguageEnum.DE, 
-    LanguageEnum.EN, 
-    LanguageEnum.ES, 
-    LanguageEnum.FR, 
-    LanguageEnum.IT, 
-    LanguageEnum.JA, 
-    LanguageEnum.KO, 
-    LanguageEnum.PL, 
-    LanguageEnum.PT, 
-    LanguageEnum.RU
+export const LanguageList: Array<ILanguageList> = [
+    {value: LanguageEnum.AR, label:'Arab'}, 
+    {value:LanguageEnum.BN, label:'Bengal'},
+    {value:LanguageEnum.DE, label:'German'}, 
+    {value:LanguageEnum.EN, label: 'English'}, 
+    {value:LanguageEnum.ES, label:'Spanish'}, 
+    {value:LanguageEnum.FR, label:'French'}, 
+    {value:LanguageEnum.IT, label:'Italian'}, 
+    {value:LanguageEnum.JA, label:'Japanese'}, 
+    {value:LanguageEnum.KO, label:'Korean'}, 
+    {value:LanguageEnum.PL, label:'Polish'}, 
+    {value:LanguageEnum.PT, label:'Portuguese'}, 
+    {value:LanguageEnum.RU, label:'Russian'}, 
+    {value:LanguageEnum.ZH_CN, label:'Chinese simplified'}, 
+    {value:LanguageEnum.ZH_TW, label:'Сhinese traditional'}, 
 ]

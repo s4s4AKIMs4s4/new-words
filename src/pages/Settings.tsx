@@ -9,7 +9,7 @@ import { LanguageEnum, LanguageList } from '../models/language';
 
 export interface ISelectOption{
     value:LanguageEnum,
-    label:LanguageEnum
+    label:string
 }
 
 function Settings({navigation}:any) {
@@ -24,10 +24,10 @@ function Settings({navigation}:any) {
     const sourceOptions = useMemo(() => {
         const sourseList:Array<ISelectOption> = []
         for(let i =0 ; i < LanguageList.length; i++){
-            const LanguageElement = LanguageList[i]
-            
+            const LanguageElement = LanguageList[i].value
+
             if(LanguageElement === User.destenationLanguage) continue;
-            sourseList.push({ value: LanguageElement, label: LanguageElement })
+            sourseList.push({...LanguageList[i]})
         }
         return sourseList
     },[User.destenationLanguage])
@@ -35,10 +35,10 @@ function Settings({navigation}:any) {
     const destionationOptions = useMemo(() => {
         const sourseList:Array<ISelectOption> = []
         for(let i =0 ; i < LanguageList.length; i++){
-            const LanguageElement = LanguageList[i]
+            const LanguageElement = LanguageList[i].value
             
             if(LanguageElement === User.sourseLanguage) continue;
-            sourseList.push({ value: LanguageElement, label: LanguageElement })
+            sourseList.push({...LanguageList[i]})
         }
         return sourseList
 
@@ -49,9 +49,9 @@ function Settings({navigation}:any) {
             <Text style={tw`text-center text-black-100  text-5xl mt-20`}>Settings</Text>
             <View style={tw`px-3`}>
                 <Text style={tw`text-sm font-light mt-15 mb-`}>Сhoose the language you already know:</Text>
-                <SelectElement placeholder = {User.sourseLanguage} options={sourceOptions}  onSelect={setSourseLanguage} value='somevalue' label='somelabel' />
+                <SelectElement placeholder = { LanguageList.find((ListItem) => ListItem.value === User.sourseLanguage)?.label } options={sourceOptions}  onSelect={setSourseLanguage} value='somevalue' label='somelabel' />
                 <Text style={tw`text-sm font-light mt-10 mb-2`}>Сhoose the language you would like to learn:</Text>
-                <SelectElement placeholder = {User.destenationLanguage} options = {destionationOptions} onSelect={setDestenationLanguage} value='somevalue' label='somelabel' />
+                <SelectElement placeholder = {LanguageList.find((ListItem) => ListItem.value === User.destenationLanguage)?.label} options = {destionationOptions} onSelect={setDestenationLanguage} value='somevalue' label='somelabel' />
                 <View style = {tw`flex justify-end`}>
                     {
                         !User.isAuth &&  <PrimaryButton 

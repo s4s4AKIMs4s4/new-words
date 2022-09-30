@@ -43,9 +43,8 @@ export function useLearn(topicId: topicEnum | null) {
         }
     }, [topicId])
 
-
     const getNotEmptyWords = (list: Array<any>): Array<any> => {
-        return list.filter((word: any) => word !== '')
+        return [...new Set(list.filter((word: any) => word !== '').map((word:string) => word.toLowerCase()))]
     }
 
     const getNextWord = () => {

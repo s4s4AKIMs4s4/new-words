@@ -1,0 +1,227 @@
+[
+    {
+        "chapterName":"All words",
+        "chapterId":1,
+        "description":"Includes all topics existing on this resource",
+        "subTopic":[]
+    },
+    {
+        "chapterName":"Important",
+        "chapterId":2,
+        "description":"Learn all the most essential and popular words. This section contains a list of words grouped by all parts of speech",
+        "subTopic":[
+            {
+                "topicName":"Actions",
+                "topicId":1,   
+                "description":"All common verbs in everyday life"
+            },
+            {
+                "topicName":"Objects",
+                "topicId":2,
+                "description":"All common nouns in everyday life"
+            },
+            {
+                "topicName":"Adverbs",
+                "topicId":3,
+                "description":"All common adverbs in everyday life"
+            },
+            
+            {
+                "topicName":"Adjectives",
+                "topicId":4,
+                "description":"All common adjectives in everyday life "
+            },      
+            {
+                "topicName":"Home",
+                "topicId":5,
+                "description":"All words related to the interior or exterior"
+            }
+        ]
+    },
+    {
+        "chapterName":"Products",
+        "chapterId":3,
+        "description":"Learn the translations of words for basic products such as: materials, tools, furniture, household items, kitchens and food",
+        "subTopic":[
+            {
+                "topicName":"Tools",
+                "topicId":6,
+                "description":"A collection of words of all basic building tools"
+            },
+            {
+                "topicName":"Materials",
+                "topicId":7,
+                "description":"Industrial, manufacturing, household materials"
+            },
+            {
+                "topicName":"Food",
+                "topicId":8,
+                "description":"Gastronomy, culinary specialties, drinks and food"
+            },
+            {
+                "topicName":"Kitchen",
+                "topicId":9,
+                "description":"items located in the kitchen. Tools, equipment, etc."
+            },
+            {
+                "topicName":"Furniture",
+                "topicId":10,
+                "description":"All major types of furniture and furniture parts"
+            }
+        ]
+    },
+    {
+        "chapterName":"Biology",
+        "chapterId":4,
+        "description":"Learn all biology-related terms. Words are classified according to topics such as body parts, animals, human qualities and emotions.",
+        "subTopic":[
+            {
+                "topicName":"Animals",
+                "topicId":11,
+                "description":"Most of the animals found in nature"
+            },
+            {
+                "topicName":"Plants",
+                "topicId":12,
+                "description":"basic human qualities and character state"
+            },
+            {
+                "topicName":"Emotions",
+                "topicId":13,
+                "description":" All basic emotional states of a person  "
+            },
+            {
+                "topicName":"Body parts",
+                "topicId":14,
+                "description":" All major internal organs and parts of the human body"
+            }
+        ]
+    },
+    {
+        "chapterName":"Culture",
+        "chapterId":5,
+        "topicId":1,
+        "description":"Learn basic sports words, types of clothing, words, names of languages and their citizens, music and architecture",
+        "subTopic":[
+            {
+                "topicName":"Language",
+                "topicId":15,
+                "description": "Names of languages and their citizens"
+            },
+            {
+                "topicName":"Qualities",
+                "topicId":16,
+                "description":"basic human qualities and character state"
+            },
+            {
+                "topicName":"Сlothing",
+                "topicId":17,
+                "description":"All types of clothing of any season are listed"
+            },
+            {
+                "topicName":"Music",
+                "topicId":18,
+                "description":"Instruments, sheet music and many different musical terms"
+            },
+            {
+                "topicName":"Architectura",
+                "topicId":19,
+                "description":"Important architectural terms, styles, and building parts"
+            }
+        ]
+    },
+    {
+        "chapterName":"The science",
+        "chapterId":6,
+        "description":"Learn all scientific vocabulary terms in disciplines such as physics, mathematics and chemistry",
+        "subTopic":[
+            {
+                "topicName":"The elements",
+                "topicId":20,
+                "description":"The elements brought together the entire periodic table of Mendeleev"
+            },
+            {
+                "topicName":"Physics",
+                "topicId":21,
+                "description":"Basic physical terms, concepts, topics and section"
+            },
+            {
+                "topicName":"History",
+                "topicId":22,
+                "description":"General historical terms, also legal and legal concepts"
+            },
+            {
+                "topicName":"Geography",
+                "topicId":23,
+                "description":"All words related to the nature of the planet earth"
+            },
+            {
+                "topicName":"Chemistry",
+                "topicId":24,
+                "description":"Сhemical objects, also the most important terms"
+            },
+            {
+                "topicName":"Maths",
+                "topicId":25,
+                "description":"Basic mathematical terms, concepts, topics and sections"
+            },
+            {
+                "topicName":"Computer science",
+                "topicId":26,
+                "description":"All basic concepts related to computers and programs"
+            }
+        ]
+    },
+    {
+        "chapterName":"Transport",
+        "chapterId":7,
+        "description":"Learn all the basic words for modes of transport and basic parts of transport",
+        "subTopic":[
+            {
+                "topicName":"Transport",
+                "topicId":27,
+                "description":"all types of ground air and water transport"
+            },
+            {
+                "topicName":"Part of transport",
+                "topicId":28,
+                "description":"Part of transport All items inside the car, outside and under the hood"
+            }
+        ]
+    },
+    {
+        "chapterName":"Other",
+        "chapterId":8,
+        "description":"In this section, words are collected for studying by topics: date and time, profession, color",
+        "subTopic":[
+            {
+                "topicName":"Professions",
+                "topicId":29,
+                "description":"All major professions found in different countries"
+            },
+            {
+                "topicName":"Date",
+                "topicId":30,
+                "description":"Different temporal terms. years months days of the week, etc."
+            },
+            {
+                "topicName":"Countries",
+                "topicId":31,
+                "description":"list of all countries on earth in one place"
+            },
+            {
+                "topicName":"Sport",
+                "topicId":32,
+                "description":"Basic sports terms, sports, sports attributes"
+            },
+            {
+                "topicName":"Colors",
+                "topicId":33,
+                "description":"Basic sports terms, sports, sports attributes"
+            }
+        ]
+    }
+]
+
+
+

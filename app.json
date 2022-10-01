@@ -1,10 +1,10 @@
 {
   "expo": {
-    "name": "NewWords",
-    "slug": "NewWords",
+    "name": "LearnWords",
+    "slug": "LearnWords",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/NewWordIcon.png",
     "userInterfaceStyle": "light",
     "splash": {
       "image": "./assets/splash.png",
@@ -22,12 +22,19 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./assets/NewWordIcon.png",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "package": "com.pagepro.testpublishapp",
+      "versionCode": 1
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "49306a49-3560-41c6-8543-b6b48c465363"
+      }
     }
   }
 }

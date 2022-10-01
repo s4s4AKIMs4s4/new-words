@@ -15,20 +15,20 @@ import useStore from '../../hooks/useStore';
 export default function Home({ navigation }: any) {
     const User = useAppSelector(state => state.userReducer)
     const { description, header, topicList } = useGetChapterInformation()
-    const {loadUserLanguges, saveUserLanguges} = useStore()
+    const { loadUserLanguges, saveUserLanguges } = useStore()
     const dispatch = useAppDispatch()
-    const { setisAuth } =  userSlice.actions
+    const { setisAuth } = userSlice.actions
 
     useEffect(() => {
         loadUserLanguges().then((result) => {
-            if(result){
+            if (result) {
                 dispatch(setisAuth(true))
             }
         }, (res) => {
-            console.log('reject')
+            // console.log('reject')
         })
 
-    },[])
+    }, [])
 
     return <>
         <View style={tw`bg-[#fff] w-full h-full`}>
@@ -45,12 +45,13 @@ export default function Home({ navigation }: any) {
                     </View>
                 </View>
 
-                {
-                    topicList && topicList.map((topicObject) => <View key={topicObject.topicId}>
-                        <Card  {...{ ...topicObject, navigation }} />
-                    </View>)
-                }
-
+                <View style={tw`flex justify-center flex-row flex-wrap mb-6`} >
+                    {
+                        topicList && topicList.map((topicObject) => <View key={topicObject.topicId}>
+                            <Card  {...{ ...topicObject, navigation }} />
+                        </View>)
+                    }
+                </View>
             </ScrollView>
 
 

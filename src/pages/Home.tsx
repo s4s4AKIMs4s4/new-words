@@ -1,21 +1,18 @@
 import { StatusBar } from 'expo-status-bar';
-import React, { useState, useEffect } from 'react';
-
-import { StyleSheet, Text, View, ScrollView } from 'react-native';
-import { Provider } from 'react-redux';
+import React, { useEffect } from 'react';
+import { Text, View, ScrollView } from 'react-native';
 import { useAppDispatch, useAppSelector } from '../../hooks/redux';
-import { Button, Image } from '@rneui/base';
 import tw from 'twrnc';
 import Card from '../components/Card';
 import PrimaryLink from '../components/Links/PrimaryLink';
 import { userSlice } from '../../store/slice/userSlice';
 import useGetChapterInformation from '../../hooks/useGetChapterInformation';
 import useStore from '../../hooks/useStore';
+import { INavigation } from '../models/topic';
 
-export default function Home({ navigation }: any) {
-    const User = useAppSelector(state => state.userReducer)
+export default function Home({ navigation }: INavigation) {
     const { description, header, topicList } = useGetChapterInformation()
-    const { loadUserLanguges, saveUserLanguges } = useStore()
+    const { loadUserLanguges } = useStore()
     const dispatch = useAppDispatch()
     const { setisAuth } = userSlice.actions
 
@@ -24,10 +21,7 @@ export default function Home({ navigation }: any) {
             if (result) {
                 dispatch(setisAuth(true))
             }
-        }, (res) => {
-            // console.log('reject')
-        })
-
+        }, (res) => {})
     }, [])
 
     return <>

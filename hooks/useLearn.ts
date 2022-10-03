@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { WordsType } from "../src/models/language";
 import { topicEnum } from "../src/models/topic";
 import { filteredDataBase } from "../src/services/LearnServices";
 import { useAppSelector } from "./redux";
@@ -7,13 +8,13 @@ export function getRandomArbitrary(min: number, max: number) {
     return Math.floor(Math.random() * (max - min) + min)
 }
 
-export interface ILanguageList {
+export interface ILanguageList{
     languageList: Array<string>,
     index: number
 }
 
 export function useLearn(topicId: topicEnum | null) {
-    const topicWords = useRef<Array<any>>()
+    const topicWords = useRef<WordsType>()
     const [currentPosition, setCurrentPosition] = useState<number | undefined>(undefined)
     const sourseLanguageList = useRef<ILanguageList | null>({ index: 1, languageList: [''] })
     const destenationLanguageList = useRef<ILanguageList>({ index: 1, languageList: [''] })
@@ -44,15 +45,15 @@ export function useLearn(topicId: topicEnum | null) {
         }
     }, [topicId])
 
-    const getNotEmptyWords = (list: Array<any>): Array<any> => {
-        return [...new Set(list.filter((word: any) => word !== '').map((word: string) => word.toLowerCase()))]
+    const getNotEmptyWords = (list: Array<string>): Array<string> => {
+        return [...new Set(list.filter((word: string) => word !== '').map((word: string) => word.toLowerCase()))]
     }
 
     const getNextWord = () => {
-        let destionatioWords = []
-        let sourceWords = []
+        let destionatioWords = ''
+        let sourceWords = ''
 
-        const conditionForNewPosition = (destionatioWords:any, sourceWords:any) => {
+        const conditionForNewPosition = (destionatioWords:string, sourceWords:string) => {
             if(!destionatioWords || !sourceWords) return true
             if(destionatioWords === '' || sourceWords === '') return true
             return false            

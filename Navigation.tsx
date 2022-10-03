@@ -1,5 +1,4 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import App from "./App";
 import { NavigationContainer } from "@react-navigation/native"
 import Settings from "./src/pages/Settings";
 import Home from "./src/pages/Home";
@@ -9,7 +8,7 @@ import Learn from "./src/pages/Learn";
 const Stack = createNativeStackNavigator();
 
 export const Navigation = () => {
-
+    //TODO: replace 'any' with type
     const getHederOptions = (tittle:string) : any => {
         return {
             title: tittle,

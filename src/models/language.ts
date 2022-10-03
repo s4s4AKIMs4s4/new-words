@@ -15,6 +15,12 @@ export enum LanguageEnum {
     ZH_TW = "zh_TW",
 }
 
+export interface IWords{
+    [key:string] : string
+}
+
+export type WordsType = Array<IWords>
+
 export interface IUserLanguge{
     sourseLanguage:LanguageEnum
     destenationLanguage:LanguageEnum

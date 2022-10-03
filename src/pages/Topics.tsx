@@ -6,8 +6,9 @@ import { SessionServices } from '../services/SessionServices'
 import { ScrollView } from 'react-native-gesture-handler'
 import { useAppDispatch } from '../../hooks/redux'
 import {sessionSlice} from '../../store/slice/sessionSlice';
+import { INavigation } from '../models/topic'
 
-function Topics({ navigation }: any) {
+function Topics({ navigation }: INavigation) {
     const dispatch = useAppDispatch()
     const { setChapterId } = sessionSlice.actions
     

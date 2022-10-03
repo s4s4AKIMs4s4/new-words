@@ -5,7 +5,7 @@ export interface IPrimaryButton {
     backgroundColor: string,
     title: string,
     containerStyle?: string,
-    callback?: () => any
+    callback?: () => void
 }
 export default function PrimaryButton({ backgroundColor, title, containerStyle, callback }: IPrimaryButton) {
     return <>

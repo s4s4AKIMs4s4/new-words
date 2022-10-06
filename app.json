@@ -2,7 +2,7 @@
   "expo": {
     "name": "LearnWords",
     "slug": "LearnWords",
-    "version": "2.0.0",
+    "version": "2.1.0",
     "orientation": "portrait",
     "icon": "./assets/NewWordIcon.png",
     "userInterfaceStyle": "light",
@@ -26,7 +26,7 @@
         "backgroundColor": "#FFFFFF"
       },
       "package": "com.pagepro.LearnWordsLearnWordsApp",
-      "versionCode": 2
+      "versionCode": 2.1
     },
     "web": {
       "favicon": "./assets/favicon.png"

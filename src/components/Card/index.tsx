@@ -17,7 +17,6 @@ export default function Card({description, navigation, topicId, topicName}: ICar
     return <>
         <View style={tw`bg-[#fff] mt-4  w-300px`}>
             <rnCard.Title style={tw`text-2xl`} >{topicName}</rnCard.Title>
-            
             <View style={{ position: "relative", alignItems: "center" }}>
                 <Text style={tw`text-center text-lg font-light`}> {description} </Text>
             </View>

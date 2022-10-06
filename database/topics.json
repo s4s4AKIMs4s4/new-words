@@ -178,11 +178,6 @@
         "description":"Learn all the basic words for modes of transport and basic parts of transport",
         "subTopic":[
             {
-                "topicName":"Transport",
-                "topicId":27,
-                "description":"all types of ground air and water transport"
-            },
-            {
                 "topicName":"Part of transport",
                 "topicId":28,
                 "description":"Part of transport All items inside the car, outside and under the hood"

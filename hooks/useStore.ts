@@ -18,7 +18,6 @@ function useStore() {
   const loadUserLanguges = (): Promise<any> => {
     return storage.load({
       key: 'languageObject',
-
       autoSync: true,
       syncInBackground: true,
       syncParams: {

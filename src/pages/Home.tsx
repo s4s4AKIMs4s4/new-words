@@ -9,19 +9,24 @@ import { userSlice } from '../../store/slice/userSlice';
 import useGetChapterInformation from '../../hooks/useGetChapterInformation';
 import useStore from '../../hooks/useStore';
 import { INavigation } from '../models/topic';
+import { IUserStoreLanguage } from '../models/language';
 
 export default function Home({ navigation }: INavigation) {
     const { description, header, topicList } = useGetChapterInformation()
+    const { setisAuth,setSourseLanguage, setDestenationLanguage} = userSlice.actions
     const { loadUserLanguges } = useStore()
     const dispatch = useAppDispatch()
-    const { setisAuth } = userSlice.actions
 
     useEffect(() => {
-        loadUserLanguges().then((result) => {
+        loadUserLanguges().then((result:IUserStoreLanguage) => {
             if (result) {
+                if(Object.keys(result).length === 0) return
                 dispatch(setisAuth(true))
+                dispatch(setSourseLanguage(result.sourseLanguage))
+                dispatch(setDestenationLanguage(result.from))
             }
         }, (res) => {})
+
     }, [])
 
     return <>

@@ -19,6 +19,11 @@ export interface IWords{
     [key:string] : string
 }
 
+export interface IUserStoreLanguage{
+    sourseLanguage:LanguageEnum,
+    from:LanguageEnum
+}
+
 export type WordsType = Array<IWords>
 
 export interface IUserLanguge{

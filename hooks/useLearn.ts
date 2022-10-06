@@ -27,10 +27,10 @@ export function useLearn(topicId: topicEnum | null) {
             const sourceWords = topicWords.current[position][User.sourseLanguage].split(',')
             const destionatioWords = topicWords.current[position][User.destenationLanguage]
             
-            sourseLanguageList!.current!.languageList = getNotEmptyWords(sourceWords)
+            sourseLanguageList!.current!.languageList = getValidateWords(sourceWords)
             sourseLanguageList!.current!.index = 0
 
-            destenationLanguageList!.current!.languageList = getNotEmptyWords(destionatioWords.split(','))
+            destenationLanguageList!.current!.languageList = getValidateWords(destionatioWords.split(','))
             destenationLanguageList!.current!.index = 0
             setCurrentWord(sourseLanguageList!.current!.languageList[destenationLanguageList!.current!.index])
         }
@@ -45,8 +45,8 @@ export function useLearn(topicId: topicEnum | null) {
         }
     }, [topicId])
 
-    const getNotEmptyWords = (list: Array<string>): Array<string> => {
-        return [...new Set(list.filter((word: string) => word !== '').map((word: string) => word.toLowerCase()))]
+    const getValidateWords = (list: Array<string>): Array<string> => {
+        return [...new Set(list.filter((word: string) => word !== '').map((word: string) => word.toLowerCase().trim()))]
     }
 
     const getNextWord = () => {

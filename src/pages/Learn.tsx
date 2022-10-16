@@ -5,7 +5,7 @@ import PrimaryButton from '../components/Buttons/PrimaryButton';
 import PrimaryTextInput from '../components/FormElements/PrimaryTextInput'
 import { useAppSelector } from '../../hooks/redux';
 import { useLearn } from '../../hooks/useLearn';
-import React, { useState} from 'react';
+import React, { useState } from 'react';
 
 export enum AnswerEnum {
     RIGHT = 'RIGHT',
@@ -16,13 +16,13 @@ export enum AnswerEnum {
 function Learn() {
     const session = useAppSelector(state => state.sessionReducer)
     const {
-        getOtherWord, 
-        currentWord, 
-        getNextWord, 
+        getOtherWord,
+        currentWord,
+        getNextWord,
         logDictionaty,
-        addToDictionary, 
-        checkWord, 
-        getAllDestinationWords 
+        addToDictionary,
+        checkWord,
+        getAllDestinationWords
     } = useLearn(session.topicId)
 
     const [isRightAnswer, setIsRightAnswer] = useState<AnswerEnum>(AnswerEnum.NO_ANSWER)
@@ -65,10 +65,8 @@ function Learn() {
                     }
                     <PrimaryButton callback={getOtherWord} containerStyle={'ml-1'} backgroundColor='rgba(39, 39, 39, 1)' title='other meaning' />
                     <PrimaryButton callback={addToDictionary} containerStyle={'ml-1 mt-1'} backgroundColor='rgba(39, 39, 39, 1)' title='add to dictionary' />
-                    {/* <PrimaryButton callback={logDictionaty} containerStyle={'ml-1 mt-1'} backgroundColor='rgba(39, 39, 39, 1)' title='load dictionary' /> */}
                 </View>
             </View>
-
         </View>
     </>
 }

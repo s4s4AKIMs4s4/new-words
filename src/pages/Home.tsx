@@ -1,4 +1,3 @@
-import { StatusBar } from 'expo-status-bar';
 import React, { useEffect } from 'react';
 import { Text, View, ScrollView } from 'react-native';
 import { useAppDispatch, useAppSelector } from '../../hooks/redux';
@@ -52,7 +51,6 @@ export default function Home({ navigation }: INavigation) {
                     }
                 </View>
             </ScrollView>
-
         </View>
     </>
 }

@@ -1,11 +1,11 @@
-import { View, TextInput } from 'react-native'
+import { View } from 'react-native'
 import { Text } from '@rneui/base';
 import tw from 'twrnc';
 import PrimaryButton from '../components/Buttons/PrimaryButton';
 import PrimaryTextInput from '../components/FormElements/PrimaryTextInput'
 import { useAppSelector } from '../../hooks/redux';
 import { useLearn } from '../../hooks/useLearn';
-import React, { useState, useRef } from 'react';
+import React, { useState} from 'react';
 
 export enum AnswerEnum {
     RIGHT = 'RIGHT',
@@ -15,9 +15,17 @@ export enum AnswerEnum {
 
 function Learn() {
     const session = useAppSelector(state => state.sessionReducer)
-    const { topicWords, getWords, getOtherWord, currentWord, getNextWord, checkWord, getAllDestinationWords } = useLearn(session.topicId)
+    const {
+        getOtherWord, 
+        currentWord, 
+        getNextWord, 
+        logDictionaty,
+        addToDictionary, 
+        checkWord, 
+        getAllDestinationWords 
+    } = useLearn(session.topicId)
+
     const [isRightAnswer, setIsRightAnswer] = useState<AnswerEnum>(AnswerEnum.NO_ANSWER)
-    const inputRef = useRef<TextInput>({} as TextInput)
     const [inputValue, setInputValue] = useState<string>('')
 
     const checkWordHandler = () => {
@@ -50,20 +58,20 @@ function Learn() {
             />
 
             <View >
-                <View style={tw`flex justify-center flex-row mb-7`} >
+                <View style={tw`flex justify-center flex-row flex-wrap w-70 mb-7`} >
                     {
                         isRightAnswer === AnswerEnum.NO_ANSWER ? <PrimaryButton callback={checkWordHandler} backgroundColor='rgba(39, 39, 39, 1)' title='check' />
                             : <PrimaryButton callback={nextWordHandler} backgroundColor='rgba(39, 39, 39, 1)' title='next word' />
                     }
                     <PrimaryButton callback={getOtherWord} containerStyle={'ml-1'} backgroundColor='rgba(39, 39, 39, 1)' title='other meaning' />
+                    <PrimaryButton callback={addToDictionary} containerStyle={'ml-1 mt-1'} backgroundColor='rgba(39, 39, 39, 1)' title='add to dictionary' />
+                    {/* <PrimaryButton callback={logDictionaty} containerStyle={'ml-1 mt-1'} backgroundColor='rgba(39, 39, 39, 1)' title='load dictionary' /> */}
                 </View>
             </View>
 
         </View>
     </>
 }
-
-
 
 export default Learn
 

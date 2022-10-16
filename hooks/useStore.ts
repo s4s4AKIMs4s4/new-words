@@ -1,4 +1,5 @@
 import { IUserLanguge } from "../src/models/language";
+import { IDictionaryElement } from "../src/models/words";
 import storage from "../store/localStorage"
 
 
@@ -38,6 +39,57 @@ function useStore() {
     })
   }
 
+
+  const loadWordFromDictionary = (): Promise<{learnList:Array<IDictionaryElement>}> => {
+    return storage.load({
+      key: 'dictionary',
+      autoSync: true,
+      syncInBackground: true,
+      syncParams: {
+        extraFetchOptions: {},
+        someFlag: true
+      }
+    })
+  }
+
+  const saveWordsToDictionary =  (dictionaryElements:Array<IDictionaryElement>): Promise<any> => {
+    const defaultStoreWordsOptions = {
+      key: 'dictionary',
+      expires: null
+    }
+    return storage.save({
+      ...defaultStoreWordsOptions,
+      data: {
+        //@ts-ignore
+        learnList: dictionaryElements,
+      },
+    });
+  }
+  const saveWordToDictionary =  (dictionaryElement:IDictionaryElement): Promise<any> => {
+
+    const defaultStoreWordsOptions = {
+      key: 'dictionary',
+      expires: null
+    }
+
+    return loadWordFromDictionary().then( (dictionatyDump) => {
+      return storage.save({
+        ...defaultStoreWordsOptions,
+        data: {
+          //@ts-ignore
+          learnList:[...dictionatyDump.learnList, dictionaryElement],
+        },
+      });
+    }, () => {
+      return storage.save({
+        ...defaultStoreWordsOptions,
+        data: {
+          learnList:[dictionaryElement],
+        },
+      });
+    })
+  }
+
   const saveChapterId = (chapterId:number): Promise<any> => {
     return storage.save({
       key: 'chapterId',
@@ -70,6 +122,6 @@ function useStore() {
     });
   }
    
-  return { saveUserLanguges, loadUserLanguges, loadChapterId, saveChapterId, loadTopic, saveTopicId  }
+  return { saveUserLanguges, loadUserLanguges, saveWordsToDictionary, loadWordFromDictionary, saveWordToDictionary, loadChapterId, saveChapterId, loadTopic, saveTopicId  }
 }
 export default useStore

@@ -4,11 +4,11 @@ import Settings from "./src/pages/Settings";
 import Home from "./src/pages/Home";
 import Topics from "./src/pages/Topics";
 import Learn from "./src/pages/Learn";
+import Dictionary from "./src/pages/Dictionary";
 
 const Stack = createNativeStackNavigator();
 
 export const Navigation = () => {
-    //TODO: replace 'any' with type
     const getHederOptions = (tittle:string) : any => {
         return {
             title: tittle,
@@ -29,6 +29,8 @@ export const Navigation = () => {
                 <Stack.Screen name="Settings" component={Settings} options={getHederOptions('Settings')} />
                 <Stack.Screen name="Topics" component={Topics} options={getHederOptions('Topics')} />
                 <Stack.Screen name="Learn" component={Learn} options={getHederOptions('Learn')} />
+                <Stack.Screen name="Dictionary" component={Dictionary} options={getHederOptions('Dictionary')} />
+
             </Stack.Navigator>
         </NavigationContainer>
     )

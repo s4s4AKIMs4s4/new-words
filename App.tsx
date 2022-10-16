@@ -12,8 +12,6 @@ export default function App() {
         <StatusBar
           animated={true}
           backgroundColor="#343a40"
-          // barStyle={statusBarStyle}
-          // showHideTransition={statusBarTransition}
           />
         <Navigation />
       </SelectProvider>

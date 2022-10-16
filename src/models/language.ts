@@ -1,3 +1,5 @@
+import { IDictionaryElement } from "./words"
+
 export enum LanguageEnum {
     AR = "ar",
     BN = "bn",
@@ -25,6 +27,7 @@ export interface IUserStoreLanguage{
 }
 
 export type WordsType = Array<IWords>
+export type DictionaryWords = Array<IDictionaryElement>
 
 export interface IUserLanguge{
     sourseLanguage:LanguageEnum

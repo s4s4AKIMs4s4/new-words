@@ -26,7 +26,6 @@ export default function Home({ navigation }: INavigation) {
                 dispatch(setDestenationLanguage(result.from))
             }
         }, (res) => {})
-
     }, [])
 
     return <>
@@ -38,9 +37,10 @@ export default function Home({ navigation }: INavigation) {
                         {description}
                     </Text>
 
-                    <View style={tw`flex justify-center flex-row mb-6`} >
+                    <View style={tw`flex justify-center flex-wrap  flex-row mb-6`} >
                         <PrimaryLink color={'#0299f2'} title={"Select Topic"} navigationCallback={() => navigation.navigate('Topics')} />
                         <PrimaryLink color={'#0299f2'} title="Settings" optionClassName={'ml-1'} navigationCallback={() => navigation.navigate('Settings')} />
+                        <PrimaryLink color={'#0299f2'} title="My dictionary" optionClassName={'ml-1'} navigationCallback={() => navigation.navigate('Dictionary')} />
                     </View>
                 </View>
 
@@ -52,7 +52,6 @@ export default function Home({ navigation }: INavigation) {
                     }
                 </View>
             </ScrollView>
-
 
         </View>
     </>

@@ -41,6 +41,11 @@ function Dictionary() {
         setInputValue('')
         getNextWord()
     }
+    const deleteWordClickHandler = () => {
+        setIsRightAnswer(AnswerEnum.NO_ANSWER)
+        setInputValue('')
+        deleteWordFromDictionary()
+    }
 
     return <>
         <View style={tw`bg-[#fff] w-full h-full flex justify-center items-center`}>
@@ -62,7 +67,7 @@ function Dictionary() {
                                         : <PrimaryButton callback={nextWordHandler} backgroundColor='rgba(39, 39, 39, 1)' title='next word' />
                                 }
                                 <PrimaryButton callback={getOtherWord} containerStyle={'ml-1'} backgroundColor='rgba(39, 39, 39, 1)' title='other meaning' />
-                                <PrimaryButton callback={deleteWordFromDictionary} containerStyle={'ml-1 mt-1'} backgroundColor='rgba(39, 39, 39, 1)' title='remove from dictionary' />
+                                <PrimaryButton callback={deleteWordClickHandler} containerStyle={'ml-1 mt-1'} backgroundColor='rgba(39, 39, 39, 1)' title='remove from dictionary' />
                             </View>
                         </View>
 

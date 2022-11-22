@@ -2,7 +2,7 @@ import tw from 'twrnc';
 import { View, TextInput } from 'react-native'
 import { Text } from '@rneui/base';
 import PrimaryTextInput from '../components/FormElements/PrimaryTextInput';
-import useDictionary from '../../hooks/useDictionary';
+import useDictionary from '../hooks/useDictionary';
 import { useState } from 'react';
 import { AnswerEnum } from './Learn';
 import PrimaryButton from '../components/Buttons/PrimaryButton';

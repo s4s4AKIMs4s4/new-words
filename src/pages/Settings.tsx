@@ -1,7 +1,7 @@
 import { View, Text } from 'react-native';
 import tw from 'twrnc';
-import { useAppDispatch, useAppSelector } from '../../hooks/redux';
-import { userSlice } from '../../store/slice/userSlice';
+import { useAppDispatch, useAppSelector } from '../hooks/redux';
+import { userSlice } from '../store/slice/userSlice';
 import PrimaryButton from '../components/Buttons/PrimaryButton';
 import SelectElement from '../components/FormElements/SelectElement';
 import {useMemo} from 'react'

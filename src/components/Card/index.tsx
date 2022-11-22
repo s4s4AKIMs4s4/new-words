@@ -4,8 +4,8 @@ import tw from 'twrnc';
 import  PrimaryLink  from '../Links/PrimaryLink';
 import { INavigation, ITopic } from '../../models/topic';
 import { useEffect } from 'react';
-import { useAppDispatch, useAppSelector } from '../../../hooks/redux';
-import { sessionSlice } from '../../../store/slice/sessionSlice';
+import { useAppDispatch, useAppSelector } from '../../hooks/redux';
+import { sessionSlice } from '../../store/slice/sessionSlice';
 
 export type ICard = ITopic & INavigation
 

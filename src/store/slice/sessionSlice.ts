@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 import useStore from "../../hooks/useStore"
-import { chapterEnum } from "../../src/models/chapter"
-import { topicEnum } from "../../src/models/topic"
+import { chapterEnum } from "../../models/chapter"
+import { topicEnum } from "../../models/topic"
 
 interface IInitialState {
     chapterId:chapterEnum | null ,

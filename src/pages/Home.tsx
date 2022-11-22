@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react';
 import { Text, View, ScrollView } from 'react-native';
-import { useAppDispatch, useAppSelector } from '../../hooks/redux';
+import { useAppDispatch, useAppSelector } from '../hooks/redux';
 import tw from 'twrnc';
 import Card from '../components/Card';
 import PrimaryLink from '../components/Links/PrimaryLink';
-import { userSlice } from '../../store/slice/userSlice';
-import useGetChapterInformation from '../../hooks/useGetChapterInformation';
-import useStore from '../../hooks/useStore';
+import { userSlice } from '../store/slice/userSlice';
+import useGetChapterInformation from '../hooks/useGetChapterInformation';
+import useStore from '../hooks/useStore';
 import { INavigation } from '../models/topic';
 import { IUserStoreLanguage } from '../models/language';
 

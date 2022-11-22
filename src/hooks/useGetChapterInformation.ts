@@ -1,6 +1,6 @@
 import { useAppDispatch, useAppSelector } from "./redux";
 import {useEffect, useState} from 'react'
-import { IChapterDescription, SessionServices } from "../src/services/SessionServices";
+import { IChapterDescription, SessionServices } from "../services/SessionServices";
 import useStore from "./useStore";
 import {sessionSlice} from "../store/slice/sessionSlice";
 

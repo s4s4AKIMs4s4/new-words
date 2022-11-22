@@ -3,8 +3,8 @@ import { Text } from '@rneui/base';
 import tw from 'twrnc';
 import PrimaryButton from '../components/Buttons/PrimaryButton';
 import PrimaryTextInput from '../components/FormElements/PrimaryTextInput'
-import { useAppSelector } from '../../hooks/redux';
-import { useLearn } from '../../hooks/useLearn';
+import { useAppSelector } from '../hooks/redux';
+import { useLearn } from '../hooks/useLearn';
 import React, { useState } from 'react';
 
 export enum AnswerEnum {

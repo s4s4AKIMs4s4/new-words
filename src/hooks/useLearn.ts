@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from "react";
-import { WordsType } from "../src/models/language";
-import { topicEnum } from "../src/models/topic";
-import { IDictionaryElement } from "../src/models/words";
-import { filteredDataBase } from "../src/services/LearnServices";
+import { WordsType } from "../models/language";
+import { topicEnum } from "../models/topic";
+import { IDictionaryElement } from "../models/words";
+import { filteredDataBase } from "../services/LearnServices";
 import { useAppSelector } from "./redux";
 import useStore from "./useStore";
 import useWords from "./useWords";

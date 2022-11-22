@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 import useStore from "../../hooks/useStore"
-import { IUserLanguge, LanguageEnum } from "../../src/models/language"
+import { IUserLanguge, LanguageEnum } from "../../models/language"
 
 interface IAuth {
     isAuth:boolean,

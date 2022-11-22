@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
-import { DictionaryWords, WordsType } from "../src/models/language";
-import { IDictionaryElement } from "../src/models/words";
+import { DictionaryWords, WordsType } from "../models/language";
+import { IDictionaryElement } from "../models/words";
 import { useAppSelector } from "./redux";
 import { ILanguageList } from "./useLearn";
 import useStore from "./useStore";

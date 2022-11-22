@@ -1,5 +1,5 @@
-import { IUserLanguge } from "../src/models/language";
-import { IDictionaryElement } from "../src/models/words";
+import { IUserLanguge } from "../models/language";
+import { IDictionaryElement } from "../models/words";
 import storage from "../store/localStorage"
 
 

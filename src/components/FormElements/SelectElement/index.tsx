@@ -1,8 +1,8 @@
 import { Select } from '@mobile-reality/react-native-select-pro';
 import tw from 'twrnc';
-import { useAppDispatch } from '../../../../hooks/redux';
+import { useAppDispatch } from '../../../hooks/redux';
 import { LanguageEnum, LanguageList } from '../../../models/language';
-import { userSlice } from '../../../../store/slice/userSlice';
+import { userSlice } from '../../../store/slice/userSlice';
 import { ISelectOption } from '../../../pages/Settings';
 
 export interface ISelectElement{

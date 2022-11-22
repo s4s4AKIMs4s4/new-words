@@ -4,8 +4,8 @@ import TopicElement from '../components/ListElements/TopicElement'
 import { useEffect, Suspense, useCallback } from 'react'
 import { SessionServices } from '../services/SessionServices'
 import { ScrollView } from 'react-native-gesture-handler'
-import { useAppDispatch } from '../../hooks/redux'
-import {sessionSlice} from '../../store/slice/sessionSlice';
+import { useAppDispatch } from '../hooks/redux'
+import {sessionSlice} from '../store/slice/sessionSlice';
 import { INavigation } from '../models/topic'
 
 function Topics({ navigation }: INavigation) {

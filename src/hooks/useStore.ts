@@ -1,23 +1,21 @@
-import { IUserLanguge } from "../models/language";
-import { IDictionaryElement } from "../models/words";
-import storage from "../store/localStorage"
-
+import { IUserLanguge } from '../models/language'
+import { IDictionaryElement } from '../models/words'
+import storage from '../store/localStorage'
 
 function useStore() {
-
-  const saveUserLanguges = (languageObject: IUserLanguge): Promise<any> => {
-    return storage.save({
+  const saveUserLanguges = async (languageObject: IUserLanguge): Promise<any> => {
+    await storage.save({
       key: 'languageObject',
       data: {
         sourseLanguage: languageObject.sourseLanguage,
-        from: languageObject.destenationLanguage,
+        from: languageObject.destenationLanguage
       },
       expires: null
-    });
+    })
   }
 
-  const loadUserLanguges = (): Promise<any> => {
-    return storage.load({
+  const loadUserLanguges = async (): Promise<any> => {
+    return await storage.load({
       key: 'languageObject',
       autoSync: true,
       syncInBackground: true,
@@ -27,21 +25,20 @@ function useStore() {
       }
     })
   }
-  const loadChapterId = (): Promise<any> => {
-    return storage.load({
+  const loadChapterId = async (): Promise<any> => {
+    return await storage.load({
       key: 'chapterId',
       autoSync: true,
       syncInBackground: true,
       syncParams: {
-        extraFetchOptions: { },
+        extraFetchOptions: {},
         someFlag: true
       }
     })
   }
 
-
-  const loadWordFromDictionary = (): Promise<{learnList:Array<IDictionaryElement>}> => {
-    return storage.load({
+  const loadWordFromDictionary = async (): Promise<{ learnList: IDictionaryElement[] }> => {
+    return await storage.load({
       key: 'dictionary',
       autoSync: true,
       syncInBackground: true,
@@ -52,56 +49,56 @@ function useStore() {
     })
   }
 
-  const saveWordsToDictionary =  (dictionaryElements:Array<IDictionaryElement>): Promise<any> => {
+  const saveWordsToDictionary = async (dictionaryElements: IDictionaryElement[]): Promise<any> => {
     const defaultStoreWordsOptions = {
       key: 'dictionary',
       expires: null
     }
-    return storage.save({
+    await storage.save({
       ...defaultStoreWordsOptions,
       data: {
-        //@ts-ignore
-        learnList: dictionaryElements,
-      },
-    });
+        learnList: dictionaryElements
+      }
+    })
   }
-  const saveWordToDictionary =  (dictionaryElement:IDictionaryElement): Promise<any> => {
-
+  const saveWordToDictionary = async (dictionaryElement: IDictionaryElement): Promise<any> => {
     const defaultStoreWordsOptions = {
       key: 'dictionary',
       expires: null
     }
 
-    return loadWordFromDictionary().then( (dictionatyDump) => {
-      return storage.save({
-        ...defaultStoreWordsOptions,
-        data: {
-          //@ts-ignore
-          learnList:[...dictionatyDump.learnList, dictionaryElement],
-        },
-      });
-    }, () => {
-      return storage.save({
-        ...defaultStoreWordsOptions,
-        data: {
-          learnList:[dictionaryElement],
-        },
-      });
+    await loadWordFromDictionary().then(
+      async (dictionatyDump) => {
+        await storage.save({
+          ...defaultStoreWordsOptions,
+          data: {
+            learnList: [...dictionatyDump.learnList, dictionaryElement]
+          }
+        })
+      },
+      async () => {
+        await storage.save({
+          ...defaultStoreWordsOptions,
+          data: {
+            learnList: [dictionaryElement]
+          }
+        })
+      }
+    )
+  }
+
+  const saveChapterId = async (chapterId: number): Promise<void> => {
+    await storage.save({
+      key: 'chapterId',
+      data: {
+        chapterId
+      },
+      expires: null
     })
   }
 
-  const saveChapterId = (chapterId:number): Promise<any> => {
-    return storage.save({
-      key: 'chapterId',
-      data: {
-        chapterId:chapterId,
-      },
-      expires: null
-    });
-  }
-
-  const loadTopic = (): Promise<any> => {
-    return storage.load({
+  const loadTopic = async (): Promise<any> => {
+    return await storage.load({
       key: 'topicId',
       autoSync: true,
       syncInBackground: true,
@@ -112,16 +109,26 @@ function useStore() {
     })
   }
 
-  const saveTopicId = (topicId:number): Promise<any> => {
-    return storage.save({
+  const saveTopicId = async (topicId: number): Promise<any> => {
+    await storage.save({
       key: 'topicId',
       data: {
-        chapterId:topicId,
+        chapterId: topicId
       },
       expires: null
-    });
+    })
   }
-   
-  return { saveUserLanguges, loadUserLanguges, saveWordsToDictionary, loadWordFromDictionary, saveWordToDictionary, loadChapterId, saveChapterId, loadTopic, saveTopicId  }
+
+  return {
+    saveUserLanguges,
+    loadUserLanguges,
+    saveWordsToDictionary,
+    loadWordFromDictionary,
+    saveWordToDictionary,
+    loadChapterId,
+    saveChapterId,
+    loadTopic,
+    saveTopicId
+  }
 }
 export default useStore

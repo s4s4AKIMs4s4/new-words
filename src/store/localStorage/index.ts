@@ -1,12 +1,12 @@
-import Storage from 'react-native-storage';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import Storage from 'react-native-storage'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 
 const storage = new Storage({
   size: 1000,
-  storageBackend: AsyncStorage, 
+  storageBackend: AsyncStorage,
   defaultExpires: null,
   enableCache: true,
-  sync: {  }
-});
+  sync: {}
+})
 
-export default storage;
+export default storage

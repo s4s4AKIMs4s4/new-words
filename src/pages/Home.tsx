@@ -62,8 +62,7 @@ export default function Home({ navigation }: INavigation) {
           </View>
 
           <View style={tw`flex justify-center flex-row flex-wrap mb-6`}>
-            {topicList != null &&
-              topicList.map((topicObject) => (
+            {topicList?.map((topicObject) => (
                 <View key={topicObject.topicId}>
                   <Card
                     {...{
@@ -72,7 +71,7 @@ export default function Home({ navigation }: INavigation) {
                     }}
                   />
                 </View>
-              ))}
+            ))}
           </View>
         </ScrollView>
       </View>

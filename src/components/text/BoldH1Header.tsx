@@ -1,5 +1,5 @@
 import tw from 'twrnc'
-import { StyleSheet, Text, View, ScrollView } from 'react-native'
+import { Text } from 'react-native'
 
 export function BoldH1Header() {
   return (

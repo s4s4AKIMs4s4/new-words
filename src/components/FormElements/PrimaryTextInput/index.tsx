@@ -1,5 +1,5 @@
 import { TextInput, StyleSheet } from 'react-native'
-import { useState, useMemo, useLayoutEffect } from 'react'
+import React, { useState, useMemo, useLayoutEffect } from 'react'
 
 export interface IPrimaryTextInput {
   placeholder: string
@@ -7,7 +7,7 @@ export interface IPrimaryTextInput {
   setInputValue: (value: string) => void
   isWrongAnswer: boolean
 }
-export default function PrimaryTextInput({
+function PrimaryTextInput({
   placeholder,
   value,
   setInputValue,
@@ -66,3 +66,5 @@ const styles = StyleSheet.create({
     borderColor: 'red'
   }
 })
+
+export default React.memo(PrimaryTextInput)

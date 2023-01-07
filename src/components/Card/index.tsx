@@ -5,10 +5,11 @@ import PrimaryLink from '../Links/PrimaryLink'
 import { INavigation, ITopic } from '../../models/topic'
 import { useAppDispatch, useAppSelector } from '../../hooks/redux'
 import { sessionSlice } from '../../store/slice/sessionSlice'
+import React from 'react'
 
 export type ICard = ITopic & INavigation
 
-export default function Card({ description, navigation, topicId, topicName }: ICard) {
+function Card({ description, navigation, topicId, topicName }: ICard) {
   const User = useAppSelector((state) => state.userReducer)
   const { setTopicId } = sessionSlice.actions
   const dispatch = useAppDispatch()
@@ -42,3 +43,4 @@ export default function Card({ description, navigation, topicId, topicName }: IC
     </>
   )
 }
+export default React.memo(Card)

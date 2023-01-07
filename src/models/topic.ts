@@ -35,7 +35,9 @@ export enum topicEnum {
 }
 
 export interface INavigation {
-  navigation: any
+  navigation: {
+    navigate: (path: string) => void
+  }
 }
 
 export interface ITopic {

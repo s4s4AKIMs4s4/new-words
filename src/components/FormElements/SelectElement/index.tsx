@@ -3,6 +3,7 @@ import tw from 'twrnc'
 import { useAppDispatch } from '../../../hooks/redux'
 import { LanguageEnum } from '../../../models/language'
 import { ISelectOption } from '../../../pages/Settings'
+import React from 'react'
 
 export interface ISelectElement {
   value: string
@@ -12,7 +13,7 @@ export interface ISelectElement {
   placeholder: string | undefined
 }
 
-export default function SelectElement({ onSelect, options, placeholder }: ISelectElement) {
+function SelectElement({ onSelect, options, placeholder }: ISelectElement) {
   const dispatch = useAppDispatch()
 
   return (
@@ -29,3 +30,4 @@ export default function SelectElement({ onSelect, options, placeholder }: ISelec
     </>
   )
 }
+export default React.memo(SelectElement)

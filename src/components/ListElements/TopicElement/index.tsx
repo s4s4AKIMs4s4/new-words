@@ -1,10 +1,11 @@
 import { ListItem } from '@rneui/themed'
+import React from 'react'
 
 export interface ITopicElement {
   name: string
   subtitle: string
 }
-export default function TopicElement({ name, subtitle }: ITopicElement) {
+function TopicElement({ name, subtitle }: ITopicElement) {
   return (
     <>
       <ListItem bottomDivider>
@@ -16,3 +17,4 @@ export default function TopicElement({ name, subtitle }: ITopicElement) {
     </>
   )
 }
+export default React.memo(TopicElement)

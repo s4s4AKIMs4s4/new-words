@@ -3,7 +3,7 @@ import { View } from 'react-native'
 import { Text } from '@rneui/base'
 import PrimaryTextInput from '../components/FormElements/PrimaryTextInput'
 import useDictionary from '../hooks/useDictionary'
-import { useState } from 'react'
+import React, { useState } from 'react'
 import { AnswerEnum } from './Learn'
 import PrimaryButton from '../components/Buttons/PrimaryButton'
 
@@ -99,4 +99,4 @@ function Dictionary() {
     </>
   )
 }
-export default Dictionary
+export default React.memo(Dictionary)

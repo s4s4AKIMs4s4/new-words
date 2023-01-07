@@ -4,7 +4,7 @@ import { useAppDispatch, useAppSelector } from '../hooks/redux'
 import { userSlice } from '../store/slice/userSlice'
 import PrimaryButton from '../components/Buttons/PrimaryButton'
 import SelectElement from '../components/FormElements/SelectElement'
-import { useMemo } from 'react'
+import React, { useMemo } from 'react'
 import { LanguageEnum, LanguageList } from '../models/language'
 
 export interface ISelectOption {
@@ -57,7 +57,7 @@ function Settings({ navigation }: any) {
             options={sourceOptions}
             onSelect={setSourseLanguage}
             value="somevalue"
-            label="somelabel"
+            label="source language"
           />
           <Text style={tw`text-sm font-light mt-10 mb-2`}>
             Сhoose the language you would like to learn:
@@ -69,7 +69,7 @@ function Settings({ navigation }: any) {
             options={destionationOptions}
             onSelect={setDestenationLanguage}
             value="somevalue"
-            label="somelabel"
+            label="destination language"
           />
           <View style={tw`flex justify-end`}>
             {!User.isAuth && (
@@ -90,4 +90,4 @@ function Settings({ navigation }: any) {
   )
 }
 
-export default Settings
+export default React.memo(Settings)

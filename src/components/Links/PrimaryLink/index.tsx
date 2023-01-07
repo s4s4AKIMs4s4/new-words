@@ -1,4 +1,5 @@
 import { Button } from '@rneui/base'
+import React from 'react'
 import tw from 'twrnc'
 
 interface IPrimaryButton {
@@ -7,7 +8,7 @@ interface IPrimaryButton {
   title: string
   optionClassName?: string
 }
-export default function PrimaryLink({
+function PrimaryLink({
   color,
   optionClassName,
   navigationCallback,
@@ -26,3 +27,5 @@ export default function PrimaryLink({
     </>
   )
 }
+
+export default React.memo(PrimaryLink)

@@ -5,7 +5,7 @@ import PrimaryButton from '../components/Buttons/PrimaryButton'
 import PrimaryTextInput from '../components/FormElements/PrimaryTextInput'
 import { useAppSelector } from '../hooks/redux'
 import { useLearn } from '../hooks/useLearn'
-import React, { useState } from 'react'
+import React, { useState, useMemo } from 'react'
 
 export enum AnswerEnum {
   RIGHT = 'RIGHT',
@@ -24,30 +24,34 @@ function Learn() {
     getAllDestinationWords
   } = useLearn(session.topicId)
 
-  const [isRightAnswer, setIsRightAnswer] = useState<AnswerEnum>(AnswerEnum.NO_ANSWER)
+  const [userAnswer, setUserAnswer] = useState<AnswerEnum>(AnswerEnum.NO_ANSWER)
   const [inputValue, setInputValue] = useState<string>('')
 
   const checkWordHandler = () => {
     if (checkWord(inputValue)) {
-      setIsRightAnswer(AnswerEnum.NO_ANSWER)
+      setUserAnswer(AnswerEnum.NO_ANSWER)
       setInputValue('')
       getNextWord()
     } else {
       setInputValue(getAllDestinationWords().join(', '))
-      setIsRightAnswer(AnswerEnum.WRONG)
+      setUserAnswer(AnswerEnum.WRONG)
     }
   }
   const dictionaryClickHandler = () => {
-    setIsRightAnswer(AnswerEnum.NO_ANSWER)
+    setUserAnswer(AnswerEnum.NO_ANSWER)
     setInputValue('')
     addToDictionary()
   }
 
   const nextWordHandler = () => {
-    setIsRightAnswer(AnswerEnum.NO_ANSWER)
+    setUserAnswer(AnswerEnum.NO_ANSWER)
     setInputValue('')
     getNextWord()
   }
+
+  const isRighAnswer = useMemo(() => {
+    return userAnswer === AnswerEnum.NO_ANSWER
+  }, [userAnswer])
 
   return (
     <>
@@ -55,7 +59,7 @@ function Learn() {
         <Text style={tw`text-center text-5xl`}>{currentWord}</Text>
 
         <PrimaryTextInput
-          isWrongAnswer={AnswerEnum.WRONG === isRightAnswer}
+          isWrongAnswer={AnswerEnum.WRONG === userAnswer}
           setInputValue={setInputValue}
           value={inputValue}
           placeholder={'enter one of the possible translations'}
@@ -63,21 +67,11 @@ function Learn() {
 
         <View>
           <View style={tw`flex justify-center flex-row flex-wrap w-70 mb-7`}>
-            {isRightAnswer === AnswerEnum.NO_ANSWER
-              ? (
               <PrimaryButton
-                callback={checkWordHandler}
+                callback={ isRighAnswer ? checkWordHandler : nextWordHandler }
                 backgroundColor="rgba(39, 39, 39, 1)"
-                title="check"
+                title={isRighAnswer ? 'check' : 'next word'}
               />
-                )
-              : (
-              <PrimaryButton
-                callback={nextWordHandler}
-                backgroundColor="rgba(39, 39, 39, 1)"
-                title="next word"
-              />
-                )}
             <PrimaryButton
               callback={getOtherWord}
               containerStyle={'ml-1'}
@@ -97,4 +91,4 @@ function Learn() {
   )
 }
 
-export default Learn
+export default React.memo(Learn)

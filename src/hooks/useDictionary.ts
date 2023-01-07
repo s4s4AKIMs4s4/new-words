@@ -87,7 +87,7 @@ export default function useDictionary() {
           getNextWord()
         })
       },
-      () => {}
+      () => { }
     )
   }
 
@@ -97,7 +97,7 @@ export default function useDictionary() {
         console.log('logDictionaty')
         console.log(dictionary)
       },
-      () => {}
+      () => { }
     )
   }
 

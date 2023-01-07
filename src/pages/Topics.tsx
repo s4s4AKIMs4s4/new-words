@@ -1,6 +1,6 @@
 import { TouchableHighlight, View } from 'react-native'
 import TopicElement from '../components/ListElements/TopicElement'
-import { Suspense, useCallback } from 'react'
+import React, { Suspense, useCallback } from 'react'
 import { SessionServices } from '../services/SessionServices'
 import { ScrollView } from 'react-native-gesture-handler'
 import { useAppDispatch } from '../hooks/redux'
@@ -45,4 +45,4 @@ function Topics({ navigation }: INavigation) {
     </>
   )
 }
-export default Topics
+export default React.memo(Topics)

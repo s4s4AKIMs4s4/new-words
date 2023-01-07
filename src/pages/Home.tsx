@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { Text, View, ScrollView } from 'react-native'
-import { useAppDispatch, useAppSelector } from '../hooks/redux'
+import { useAppDispatch } from '../hooks/redux'
 import tw from 'twrnc'
 import Card from '../components/Card'
 import PrimaryLink from '../components/Links/PrimaryLink'
@@ -10,7 +10,7 @@ import useStore from '../hooks/useStore'
 import { INavigation } from '../models/topic'
 import { IUserStoreLanguage } from '../models/language'
 
-export default function Home({ navigation }: INavigation) {
+function Home({ navigation }: INavigation) {
   const { description, header, topicList } = useGetChapterInformation()
   const { setisAuth, setSourseLanguage, setDestenationLanguage } = userSlice.actions
   const { loadUserLanguges } = useStore()
@@ -44,19 +44,19 @@ export default function Home({ navigation }: INavigation) {
               <PrimaryLink
                 color={'#0299f2'}
                 title={'Select Topic'}
-                navigationCallback={() => navigation.navigate('Topics')}
+                navigationCallback={() => { navigation.navigate('Topics') }}
               />
               <PrimaryLink
                 color={'#0299f2'}
                 title="Settings"
                 optionClassName={'ml-1'}
-                navigationCallback={() => navigation.navigate('Settings')}
+                navigationCallback={() => { navigation.navigate('Settings') }}
               />
               <PrimaryLink
                 color={'#0299f2'}
                 title="My dictionary"
                 optionClassName={'ml-1'}
-                navigationCallback={() => navigation.navigate('Dictionary')}
+                navigationCallback={() => { navigation.navigate('Dictionary') }}
               />
             </View>
           </View>
@@ -78,3 +78,5 @@ export default function Home({ navigation }: INavigation) {
     </>
   )
 }
+
+export default React.memo(Home)

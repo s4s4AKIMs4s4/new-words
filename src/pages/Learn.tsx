@@ -5,12 +5,13 @@ import PrimaryButton from '../components/Buttons/PrimaryButton'
 import PrimaryTextInput from '../components/FormElements/PrimaryTextInput'
 import { useAppSelector } from '../hooks/redux'
 import { useLearn } from '../hooks/useLearn'
-import React, { useState, useMemo } from 'react'
+import React, { useState, useMemo, useCallback } from 'react'
+import PaidAdlert from '../components/alerts/paidAdlert'
 
 export enum AnswerEnum {
   RIGHT = 'RIGHT',
   WRONG = 'WRONG',
-  NO_ANSWER = 'NO_ANSWER'
+  NO_ANSWER = 'NO_ANSWER',
 }
 
 function Learn() {
@@ -24,7 +25,15 @@ function Learn() {
     getAllDestinationWords
   } = useLearn(session.topicId)
 
-  const [userAnswer, setUserAnswer] = useState<AnswerEnum>(AnswerEnum.NO_ANSWER)
+  const [userAnswer, setUserAnswer] = useState<AnswerEnum>(
+    AnswerEnum.NO_ANSWER
+  )
+  const [isOpenPaidAlert, setIsOpenPaidAlert] = useState<boolean>(true)
+
+  const closeAlert = () => {
+    setIsOpenPaidAlert(false)
+  }
+
   const [inputValue, setInputValue] = useState<string>('')
 
   const checkWordHandler = () => {
@@ -55,7 +64,10 @@ function Learn() {
 
   return (
     <>
-      <View style={tw`bg-[#fff] w-full h-full flex justify-center items-center`}>
+     <PaidAdlert isOpen= {isOpenPaidAlert} closeAlert = {closeAlert}/>
+      <View
+        style={tw`bg-[#fff] w-full h-full flex justify-center items-center`}
+      >
         <Text style={tw`text-center text-5xl`}>{currentWord}</Text>
 
         <PrimaryTextInput
@@ -67,16 +79,16 @@ function Learn() {
 
         <View>
           <View style={tw`flex justify-center flex-row flex-wrap w-70 mb-7`}>
-              <PrimaryButton
-                callback={ isRighAnswer ? checkWordHandler : nextWordHandler }
-                backgroundColor="rgba(39, 39, 39, 1)"
-                title={isRighAnswer ? 'check' : 'next word'}
-              />
             <PrimaryButton
               callback={getOtherWord}
-              containerStyle={'ml-1'}
+              containerStyle={'mr-1'}
               backgroundColor="rgba(39, 39, 39, 1)"
               title="other meaning"
+            />
+            <PrimaryButton
+              callback={isRighAnswer ? checkWordHandler : nextWordHandler}
+              backgroundColor="rgba(39, 39, 39, 1)"
+              title={isRighAnswer ? 'check' : 'next word'}
             />
             <PrimaryButton
               callback={dictionaryClickHandler}

@@ -1,6 +1,5 @@
 import { Button } from '@rneui/base'
 import tw from 'twrnc'
-
 export interface IPrimaryButton {
   backgroundColor: string
   title: string

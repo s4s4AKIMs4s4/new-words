@@ -12,7 +12,8 @@ import { IUserStoreLanguage } from '../models/language'
 
 function Home({ navigation }: INavigation) {
   const { description, header, topicList } = useGetChapterInformation()
-  const { setisAuth, setSourseLanguage, setDestenationLanguage } = userSlice.actions
+  const { setisAuth, setSourseLanguage, setDestenationLanguage } =
+    userSlice.actions
   const { loadUserLanguges } = useStore()
   const dispatch = useAppDispatch()
 
@@ -35,8 +36,13 @@ function Home({ navigation }: INavigation) {
       <View style={tw`bg-[#fff] w-full h-full`}>
         <ScrollView>
           <View style={tw`bg-[#777777] rounded-b-sm`}>
-            <Text style={tw`text-center text-gray-100  text-5xl mt-6`}> {header} </Text>
-            <Text style={tw`text-center text-gray-100/90 font-medium text-lg mb-4 mt-2 px-5`}>
+            <Text style={tw`text-center text-gray-100  text-5xl mt-6`}>
+              {' '}
+              {header}{' '}
+            </Text>
+            <Text
+              style={tw`text-center text-gray-100/90 font-medium text-lg mb-4 mt-2 px-5`}
+            >
               {description}
             </Text>
 
@@ -44,33 +50,39 @@ function Home({ navigation }: INavigation) {
               <PrimaryLink
                 color={'#0299f2'}
                 title={'Select Topic'}
-                navigationCallback={() => { navigation.navigate('Topics') }}
+                navigationCallback={() => {
+                  navigation.navigate('Topics')
+                }}
               />
               <PrimaryLink
                 color={'#0299f2'}
                 title="Settings"
                 optionClassName={'ml-1'}
-                navigationCallback={() => { navigation.navigate('Settings') }}
+                navigationCallback={() => {
+                  navigation.navigate('Settings')
+                }}
               />
               <PrimaryLink
                 color={'#0299f2'}
                 title="My dictionary"
                 optionClassName={'ml-1'}
-                navigationCallback={() => { navigation.navigate('Dictionary') }}
+                navigationCallback={() => {
+                  navigation.navigate('Dictionary')
+                }}
               />
             </View>
           </View>
 
           <View style={tw`flex justify-center flex-row flex-wrap mb-6`}>
             {topicList?.map((topicObject) => (
-                <View key={topicObject.topicId}>
-                  <Card
-                    {...{
-                      ...topicObject,
-                      navigation
-                    }}
-                  />
-                </View>
+              <View key={topicObject.topicId}>
+                <Card
+                  {...{
+                    ...topicObject,
+                    navigation
+                  }}
+                />
+              </View>
             ))}
           </View>
         </ScrollView>

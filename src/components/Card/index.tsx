@@ -31,7 +31,7 @@ function Card({ description, navigation, topicId, topicName }: ICard) {
           <PrimaryLink
             color={'#0299f2'}
             optionClassName={'mt-4'}
-            title={'Select Topic'}
+            title={'Learn words'}
             navigationCallback={() => {
               dispatch(setTopicId(topicId))
               if (User.isAuth) navigation.navigate('Learn')

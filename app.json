@@ -23,7 +23,7 @@
         "foregroundImage": "./assets/NewWordIcon.png",
         "backgroundColor": "#FFFFFF"
       },
-      "package": "com.pagepro.LearnWordsLearnWordsAppAppGalery",
+      "package": "com.pagepro.LearnWordsLearnWordsApp",
       "versionCode": 5
     },
     "web": {

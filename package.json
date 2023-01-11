@@ -13,6 +13,7 @@
   "dependencies": {
     "@babel/plugin-transform-modules-commonjs": "^7.20.11",
     "@babel/runtime": "^7.20.7",
+    "@expo/vector-icons": "^13.0.0",
     "@expo/webpack-config": "^0.17.0",
     "@mobile-reality/react-native-select-pro": "^1.11.1",
     "@react-native-async-storage/async-storage": "^1.17.10",
@@ -22,7 +23,6 @@
     "@reduxjs/toolkit": "^1.8.5",
     "@rneui/base": "^4.0.0-rc.6",
     "@rneui/themed": "^4.0.0-rc.6",
-    "@testing-library/jest-native": "^5.4.1",
     "axios": "^0.27.2",
     "expo": "~46.0.9",
     "expo-status-bar": "~1.4.0",
@@ -43,7 +43,6 @@
     "@babel/core": "^7.12.9",
     "@babel/plugin-transform-react-jsx": "^7.20.7",
     "@babel/preset-typescript": "^7.18.6",
-    "@testing-library/react-native": "^11.5.0",
     "@types/jest": "^29.2.5",
     "@types/react": "~18.0.14",
     "@types/react-native": "~0.69.1",

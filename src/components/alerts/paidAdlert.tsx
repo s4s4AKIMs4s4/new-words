@@ -8,7 +8,8 @@ interface IPaidAdlert {
   isOpen: boolean
   closeAlert: () => void
 }
-const GOOGLE_URL = 'https://play.google.com/store/apps/details?id=com.ninjakiwi.bloonstd6&hl=en&gl=US'
+
+const GOOGLE_URL = 'https://play.google.com/store/apps/details?id=com.pagepro.LearnAllWords'
 
 function PaidAdlert({ isOpen, closeAlert }: IPaidAdlert) {
   return (
@@ -20,8 +21,7 @@ function PaidAdlert({ isOpen, closeAlert }: IPaidAdlert) {
           >
             <View>
               <Text style={tw`text-sm `}>
-                Now only 30% of all words are available to you all words are
-                available in the {''}
+                Only 30% of all words are available to you now. All words are available in the {''}
                 <Text style={{ color: 'blue' }}
                 // eslint-disable-next-line @typescript-eslint/no-misused-promises
                 onPress={async () => await Linking.openURL(GOOGLE_URL)}>

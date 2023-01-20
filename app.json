@@ -2,12 +2,12 @@
   "expo": {
     "name": "LearnWords",
     "slug": "LearnWords",
-    "version": "5.0.0",
+    "version": "6.0.0",
     "orientation": "portrait",
-    "icon": "./assets/NewWordIcon.png",
+    "icon": "./assets/Logo.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/NewWordsplash.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
